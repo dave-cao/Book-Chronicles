@@ -1,5 +1,6 @@
 import "../styles/navbar.css"
 import { Link } from "react-router-dom"
+import BackToTopButton from "./BackToTopButton";
 
 function Navbar() {
   return (
@@ -20,6 +21,9 @@ function Navbar() {
           <Link to="/getBookInfo" className="nav-item nav-link" href="#">Get Book</Link>
         </div>
       </div>
+
+      {/* IT WILL BE HERE FOR NOW */}
+      <BackToTopButton />
     </nav>
   );
 }

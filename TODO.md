@@ -1,5 +1,5 @@
 # Things to Do
 
+1. Make a footer
+2. Links to my website and stuff
 
-1. Style home page
-2. Make Home and and subtitle a better description

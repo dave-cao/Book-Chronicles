@@ -2,6 +2,7 @@ import { useState } from "react"
 import pressEnter from "../functions/pressEnter"
 import "../styles/bookinfo.css"
 import Book from "../components/Book"
+import BackToTopButton from "../components/BackToTopButton"
 
 function GetBookInfo() {
   const [bookTitle, setBookTitle] = useState("")

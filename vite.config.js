@@ -14,6 +14,7 @@ export default defineConfig(() => {
         },
       }),
     ],
+    base: "/",
     optimizeDeps: {
       include: ["ckeditor5-custom-build"],
     },

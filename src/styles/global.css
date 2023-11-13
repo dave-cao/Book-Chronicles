@@ -71,3 +71,25 @@ body {
 .orange-button {
   background-color: var(--textAccent);
 }
+
+/* BACK TO TOP BUTTON */
+.back-to-top-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0.5;
+  width: 30px;
+  cursor: pointer;
+
+}
+
+.back-to-top-button:hover {
+  opacity: 1;
+}
+
+.show-back-to-top {
+  display: inline;
+}
+
+
