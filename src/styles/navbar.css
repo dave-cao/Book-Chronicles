@@ -1,0 +1,33 @@
+@import "./global.css";
+
+nav {
+  margin: 10px;
+  background-color: var(--backgroundAccent);
+}
+
+nav li {
+  margin: 10px;
+  text-decoration: none;
+}
+Home
+/* Disable link underlining */
+.link {
+  color: inherit;
+}
+
+.link:hover {
+  text-decoration: inherit;
+}
+
+nav h3 {
+  margin: 0;
+  font-size: 20px;
+
+}
+
+@media only screen and (max-width: 400px) {
+  nav h3  {
+    display: none;
+  }
+}
+

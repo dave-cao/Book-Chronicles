@@ -1,0 +1,73 @@
+:root {
+  --background: #f5fcfe;
+  --backgroundAccent: #dff9fe;
+
+  --textLightAccent: #ffac6b;
+  --textAccent: #ff8d67;
+  --lightTextColor: #b0b0b0;
+  --textColor: #808080;
+
+  --darkAccent: #fd6470;
+
+  --borderColor: #87ceeb;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background);
+  color: var(--textColor);
+}
+
+.darkAccent {
+  background-color: var(--darkAccent);
+}
+
+
+.accent {
+  color: var(--textAccent);
+}
+
+.pastel-black {
+  color: #333333; /* Very dark gray, approaching black */
+  /* You can use this color for text, background, or borders */
+}
+
+.pastel-red {
+  color: var(--darkAccent);
+}
+
+.back-pastel-green {
+  background-color: #c2e8c2;
+}
+
+.pastel-green {
+  color: #6faa6f;
+}
+
+.back-pastel-purple {
+  background-color: #e0d8f1;
+}
+
+.pastel-purple {
+  color: #8f7aae;
+}
+
+.pastel-orange {
+  color: #ff8d67;
+}
+
+.red-button, .orange-button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: 1px solid var(--borderColor);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.red-button {
+  background-color: var(--darkAccent)
+}
+
+.orange-button {
+  background-color: var(--textAccent);
+}

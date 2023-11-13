@@ -1,0 +1,38 @@
+{
+  "name": "book_review",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-alignment": "^40.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^40.0.0",
+    "@ckeditor/ckeditor5-image": "^40.0.0",
+    "@ckeditor/ckeditor5-react": "^6.1.0",
+    "@popperjs/core": "^2.11.8",
+    "@supabase/supabase-js": "^2.38.4",
+    "ckeditor5-custom-build": "file:ckeditor5",
+    "fuse.js": "^7.0.0",
+    "luxon": "^3.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.18.0",
+    "vite-plugin-commonjs": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "sass": "^1.69.5",
+    "vite": "^4.4.5"
+  }
+}

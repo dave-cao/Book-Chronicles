@@ -1,0 +1,223 @@
+@import "./global.css";
+/* create.css */
+
+.create-container {
+  display: inline-block;
+
+}
+
+@media screen and (max-width: 720px) {
+  .create-container {
+    width: 100%;
+
+
+  }
+}
+
+
+.create-post-title {
+  width: 700px;
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 35px;
+  font-weight: bold;
+}
+
+
+
+.red-button, .orange-button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: 1px solid var(--borderColor);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.red-button {
+  background-color: var(--darkAccent)
+}
+
+.orange-button {
+  background-color: var(--textAccent);
+}
+
+.red-button:hover, .orange-button:hover {
+  background-color: #ff4500;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* FORM */
+form {
+  width: 100%;
+}
+
+.input input, textarea {
+  max-width: 700px;
+  width: 90%;
+  margin: 10px;
+  padding: 10px;
+
+}
+
+.ck-editor__editable_inline {
+  height: 400px;
+  width: 100%;
+  max-width: 662px;
+  border: #8f8f9d solid 1px !important;
+  background-color: white;
+}
+
+div.ck {
+  max-width: 662px;
+  width: 90vw;
+}
+
+
+.ckeditor-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+
+.radio-container {
+  text-align: left;
+  margin: 10px;
+  margin-left: 38px;
+}
+
+.radio {
+  text-align: left;
+  margin-left: 5px;
+}
+
+/* POST PAGE */
+
+.post-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post {
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+  margin: 20px;
+}
+
+.post-tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.post-category {
+    background-color: #ffd3db;
+    border-radius: 20px;
+    padding: 7px;
+    font-size: 0.70rem;
+  }
+
+.post h2 {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.post-image {
+  width: auto;
+  max-width: 100%;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  max-height: 60vw;
+}
+
+/* EDIT DELETE BUTTONS */
+
+
+.action-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.action-images img {
+  width: 20px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.like-image {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.like-image {
+  position: relative;
+}
+
+.like-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.like-image:hover img {
+  animation: jump 1s ease infinite;
+}
+
+@keyframes jump {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.edit-image-link:hover {
+  text-decoration: inherit;
+}
+
+/* COMMENTS SECTION */
+.comments-section {
+  margin-top: 20px;
+  margin-bottom: 6rem;
+  width: 100%;
+  max-width: 700px;
+  background-color: #dff9fe;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.insert-comment-container {
+  display: flex;
+  align-items: center;
+}
+
+.comments-section input {
+  padding: 6px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.comments-container {
+  
+  margin-top: 20px;
+  border-bottom: #c0c0c0  solid 1px;
+}
+.comment {
+  border-top: #c0c0c0  solid 1px;
+}
+
+
+
+
+

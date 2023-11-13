@@ -1,0 +1,31 @@
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  height: 100vh;
+}
+
+body {
+  /*
+  background-image: url("./assets/pastelSun.png");
+  background-size: 800px;
+  background-repeat: no-repeat;
+  background-position: -400px 80%;
+  background-attachment: fixed;
+*/
+
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1198px) {
+
+  body {
+    background-image: none;
+  }
+
+}
