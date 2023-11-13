@@ -14,7 +14,7 @@ export default defineConfig(() => {
         },
       }),
     ],
-    base: "/",
+    base: "/Book-Chronicles/",
     optimizeDeps: {
       include: ["ckeditor5-custom-build"],
     },
