@@ -32,7 +32,7 @@ function Home({ supabase }) {
 
   // display post previews
   const displayPostPreviews = () => {
-    const searchResults = fuzzySearch(search, posts, ["title", "category"])
+    const searchResults = fuzzySearch(search, posts, ["title", "category", "username"])
     return searchResults.map((post) => {
       return <PostPreview key={post.id} id={post.id} title={post.title} created_at={post.created_at} vote={post.vote} category={post.category} username={post.username} />
     })
