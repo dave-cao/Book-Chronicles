@@ -50,7 +50,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://imgur.com/0Aq3iqh' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='./output2x.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF recorded using OBS and converted to GIF (.mkv --> .gif) by FFMPEG
