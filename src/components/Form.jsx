@@ -1,5 +1,5 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import Editor from '../../ckeditor5/build/ckeditor';
+import Editor from "../../ckeditor5/build/ckeditor"
 
 
 function Form({ handleChange, post }) {
@@ -18,6 +18,9 @@ function Form({ handleChange, post }) {
         <div className='ckeditor-container'>
           <CKEditor
             config={{
+              mediaEmbed: {
+                previewsInData: true
+              },
               placeholder: "Content (optional)",
               toolbar: {
                 shouldNotGroupWhenFull: true

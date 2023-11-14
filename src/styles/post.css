@@ -127,13 +127,13 @@ div.ck {
   font-size: 2.5rem;
 }
 
-.post-image {
-  width: auto;
+.post-image, .post p img {
+  width: 100%;
   max-width: 420px;
   margin-top: 10px;
   margin-bottom: 30px;
   border-radius: 10px;
-  max-height: 60vw;
+  height: auto;
 }
 
 /* EDIT DELETE BUTTONS */

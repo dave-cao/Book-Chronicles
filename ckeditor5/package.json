@@ -15,13 +15,16 @@
     "@ckeditor/ckeditor5-editor-inline": "40.0.0",
     "@ckeditor/ckeditor5-essentials": "40.0.0",
     "@ckeditor/ckeditor5-heading": "40.0.0",
+    "@ckeditor/ckeditor5-horizontal-line": "40.0.0",
     "@ckeditor/ckeditor5-image": "40.0.0",
     "@ckeditor/ckeditor5-indent": "40.0.0",
     "@ckeditor/ckeditor5-link": "40.0.0",
     "@ckeditor/ckeditor5-list": "40.0.0",
     "@ckeditor/ckeditor5-media-embed": "40.0.0",
     "@ckeditor/ckeditor5-paragraph": "40.0.0",
-    "@ckeditor/ckeditor5-table": "40.0.0"
+    "@ckeditor/ckeditor5-paste-from-office": "40.0.0",
+    "@ckeditor/ckeditor5-typing": "40.0.0",
+    "@ckeditor/ckeditor5-upload": "40.0.0"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-translations": "^32.1.2",

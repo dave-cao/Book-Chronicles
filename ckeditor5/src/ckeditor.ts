@@ -11,20 +11,25 @@ import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Heading } from '@ckeditor/ckeditor5-heading';
+import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 import {
 	AutoImage,
 	Image,
 	ImageCaption,
+	ImageInsert,
+	ImageResize,
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload
 } from '@ckeditor/ckeditor5-image';
 import { Indent } from '@ckeditor/ckeditor5-indent';
-import { AutoLink, Link } from '@ckeditor/ckeditor5-link';
+import { AutoLink, Link, LinkImage } from '@ckeditor/ckeditor5-link';
 import { List } from '@ckeditor/ckeditor5-list';
 import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
+import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
+import { TextTransformation } from '@ckeditor/ckeditor5-typing';
+import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
 // See https://ckeditor.com/docs/ckeditor5/latest/installation/plugins/installing-plugins.html for details.
@@ -35,23 +40,28 @@ class Editor extends InlineEditor {
 		AutoImage,
 		AutoLink,
 		Autoformat,
+		Base64UploadAdapter,
 		BlockQuote,
 		Bold,
 		Essentials,
 		Heading,
+		HorizontalLine,
 		Image,
 		ImageCaption,
+		ImageInsert,
+		ImageResize,
 		ImageStyle,
 		ImageToolbar,
 		ImageUpload,
 		Indent,
 		Italic,
 		Link,
+		LinkImage,
 		List,
 		MediaEmbed,
 		Paragraph,
-		Table,
-		TableToolbar
+		PasteFromOffice,
+		TextTransformation
 	];
 
 	public static override defaultConfig = {
@@ -65,12 +75,10 @@ class Editor extends InlineEditor {
 				'bulletedList',
 				'numberedList',
 				'|',
-				'outdent',
-				'indent',
+				'alignment',
 				'|',
-				'imageUpload',
+				'imageInsert',
 				'blockQuote',
-				'insertTable',
 				'mediaEmbed',
 				'undo',
 				'redo'
@@ -83,14 +91,8 @@ class Editor extends InlineEditor {
 				'toggleImageCaption',
 				'imageStyle:inline',
 				'imageStyle:block',
-				'imageStyle:side'
-			]
-		},
-		table: {
-			contentToolbar: [
-				'tableColumn',
-				'tableRow',
-				'mergeTableCells'
+				'imageStyle:side',
+				'linkImage'
 			]
 		}
 	};
