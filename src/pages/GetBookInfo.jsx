@@ -2,29 +2,31 @@ import { useState } from "react"
 import pressEnter from "../functions/pressEnter"
 import "../styles/bookinfo.css"
 import Book from "../components/Book"
-import BackToTopButton from "../components/BackToTopButton"
+import Gear from "../components/Gear"
 
 function GetBookInfo() {
   const [bookTitle, setBookTitle] = useState("")
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleTitleChange = (event) => {
     setBookTitle(event.target.value)
   }
 
   const searchForBook = async () => {
+
+    setLoading(true);
+
     const response = await fetch(`https://openlibrary.org/search.json?q=${bookTitle}`)
     const data = await response.json()
     setBooks([]);
     setBookTitle("")
 
+
     for (const book of data.docs) {
-
       setTimeout(async () => {
-
         const bookInfoResponse = await fetch(`https://openlibrary.org${book.key}.json`)
         const bookData = await bookInfoResponse.json()
-
         // if description exists
         let description;
         if (bookData.description) {
@@ -39,9 +41,10 @@ function GetBookInfo() {
         setBooks((book) => {
           return [...book, bookObject]
         })
-
       }, 1000)
     }
+
+    setLoading(false)
   }
 
   const displayBooks = () => {
@@ -64,6 +67,7 @@ function GetBookInfo() {
         <button className="btn orange-button" onClick={searchForBook}>Search</button>
       </div>
       <div className="books-container">
+        {loading ? <Gear /> : ""}
         {displayBooks()}
       </div>
     </>

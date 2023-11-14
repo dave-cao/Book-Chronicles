@@ -6,6 +6,8 @@ import pressEnter from "../functions/pressEnter";
 import trash from "../assets/trash.png"
 import edit from "../assets/edit.png"
 import like from "../assets/like.png"
+import password from "../functions/password";
+import getUsername from "../functions/getUsername";
 
 
 function Post({ supabase }) {
@@ -15,6 +17,7 @@ function Post({ supabase }) {
   const [clicked, setClicked] = useState(false)
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState("")
+  const username = getUsername() || "null";
 
   // get url param
   const { id } = useParams();
@@ -27,7 +30,6 @@ function Post({ supabase }) {
   // get our post
   const getPost = async () => {
     const { data, error } = await supabase.from("posts").select().eq('id', id)
-    console.log(data)
     setPost(data[0])
   }
 
@@ -69,18 +71,34 @@ function Post({ supabase }) {
 
   // delete current post
   const deletePost = async () => {
-    if (confirm("Are you sure you want to delete this post?")) {
-      const { error } = await supabase.from("posts").delete().eq("id", id)
-      navigate("/")
+    const testPass = await password.authenticate(post.pass)
+    if (testPass) {
+      if (confirm("Are you sure you want to delete this post?")) {
+        const { error } = await supabase.from("posts").delete().eq("id", id)
+        navigate("/")
+      } else {
+        console.log("delete is cancelled")
+      }
     } else {
-      console.log("delete is cancelled")
+      alert("Wrong password!")
+    }
+  }
+
+  // EDITING POST LOGIC
+  const editPost = async () => {
+    const testPass = await password.authenticate(post.pass)
+    if (testPass) {
+      navigate(`/post/${id}/edit`)
+    } else {
+      alert("Wrong password!")
     }
   }
 
   // display comments
   const createComment = async () => {
+
     // insert comment into database
-    const { data, error } = await supabase.from("comments").insert({ post_id: id, comment: comment })
+    const { data, error } = await supabase.from("comments").insert({ post_id: id, comment: comment, username: username })
     console.log("Comment is inserted into database...")
 
     // update the comments
@@ -91,7 +109,7 @@ function Post({ supabase }) {
   }
 
   const displayComments = comments.map((comment) => {
-    return <Comment key={comment.id} date={comment.created_at} comment={comment.comment} />
+    return <Comment key={comment.id} date={comment.created_at} comment={comment.comment} id={comment.id} supabase={supabase} pass={post.pass} reloadComments={getComments} username={comment.username} />
   })
 
   // tagColor
@@ -104,12 +122,31 @@ function Post({ supabase }) {
 
 
   function createMarkup() {
-    return { __html: post.content };
+    const scannedHTML = convertEmbed(post.content ? post.content : "")
+    console.log(scannedHTML)
+
+    return { __html: scannedHTML };
   }
 
   function postContent() {
     return <div dangerouslySetInnerHTML={createMarkup()} />;
   }
+
+  // find iframe
+  const convertEmbed = (htmlString) => {
+    // Use a regular expression to find the oembed element in the HTML string
+    const oembedRegex = /<oembed[^>]*>/g;
+    const oembedMatch = htmlString.match(oembedRegex);
+
+    // If an oembed element was found, convert it to an iframe element
+    if (oembedMatch) {
+      const oembedUrl = oembedMatch[0].match(/url="([^"]*)"/)[1];
+      const iframeElement = `<iframe src="${oembedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      htmlString = htmlString.replace(oembedRegex, iframeElement);
+    }
+
+    return htmlString;
+  };
 
 
   // returns the post content
@@ -124,7 +161,8 @@ function Post({ supabase }) {
         <h2 className="pastel-black">{post.title}</h2>
         <img className="post-image" src={post.img}></img>
         <p>{postContent()}</p>
-        <div></div>
+        <p><b>{post.username ? "~ " + post.username : ""}</b></p>
+
 
         {/* buttons */}
 
@@ -133,7 +171,7 @@ function Post({ supabase }) {
             <img src={like} /> <b>{post.vote} {post.vote !== 1 ? "likes" : "like"}</b>
           </div>
           <div>
-            <Link className="edit-image-link" to={`/post/${post.id}/edit`}> <img className="edit-image" src={edit} /> </Link>
+            <img onClick={editPost} className="edit-image" src={edit} />
             <img onClick={deletePost} className="delete-image" src={trash} />
           </div>
         </div>

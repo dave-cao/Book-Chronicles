@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import fuzzySearch from "../functions/fuzzySearch";
 import PostPreview from "../components/PostPreview";
 import "../styles/home.css"
+import Gear from "../components/Gear";
 
 
 
@@ -33,7 +34,7 @@ function Home({ supabase }) {
   const displayPostPreviews = () => {
     const searchResults = fuzzySearch(search, posts, ["title", "category"])
     return searchResults.map((post) => {
-      return <PostPreview key={post.id} id={post.id} title={post.title} created_at={post.created_at} vote={post.vote} category={post.category} />
+      return <PostPreview key={post.id} id={post.id} title={post.title} created_at={post.created_at} vote={post.vote} category={post.category} username={post.username} />
     })
   }
 
@@ -111,7 +112,7 @@ function Home({ supabase }) {
       {/* the post previews */}
       <div className="post-preview-container">
 
-        {displayPostPreviews()}
+        {displayPostPreviews().length !== 0 ? displayPostPreviews() : <Gear />}
       </div>
     </>
   )

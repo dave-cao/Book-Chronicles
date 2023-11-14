@@ -14,6 +14,9 @@ import Edit from './pages/Edit'
 // components
 import Navbar from './components/Navbar'
 
+// functions
+import getUsername from './functions/getUsername'
+
 // supabase
 import { createClient } from "@supabase/supabase-js"
 const supabaseURL = "https://wfmzmjdkdoryaeunljkv.supabase.co"

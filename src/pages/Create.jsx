@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/post.css"
+import password from "../functions/password";
+import getUsername from "../functions/getUsername";
 
 // components
 import Form from "../components/Form";
@@ -9,6 +11,9 @@ function Create({ supabase }) {
   const [post, setPost] = useState({ title: "", content: "", img: "" })
   const navigate = useNavigate() // for navigation
   const { state } = useLocation();
+
+  // functions
+  const username = getUsername() || "null";
 
   // IF WE GRABBED A BOOK
   useEffect(() => {
@@ -44,8 +49,12 @@ function Create({ supabase }) {
 
   // create book on user submit and inserts into supabase
   const createPost = async () => {
+
+    // generate hashed password
+    const pass = prompt("Set a password for this post...");
+    const hash = password.generateHash(pass);
     const { data, error } = await supabase.from('posts').insert({
-      title: post.title, content: post.content, img: post.img, category: post.category
+      title: post.title, content: post.content, img: post.img, category: post.category, pass: hash, username: username
     })
     alert("Post inserted into database!")
     navigate("/")

@@ -19,6 +19,7 @@
     "@ckeditor/ckeditor5-react": "^6.1.0",
     "@popperjs/core": "^2.11.8",
     "@supabase/supabase-js": "^2.38.4",
+    "bcryptjs": "^2.4.3",
     "ckeditor5-custom-build": "file:ckeditor5",
     "fuse.js": "^7.0.0",
     "luxon": "^3.4.3",
