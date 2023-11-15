@@ -2,6 +2,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from "../../ckeditor5/build/ckeditor"
 
 
+
 function Form({ handleChange, post }) {
   return (
     <form>
@@ -12,7 +13,7 @@ function Form({ handleChange, post }) {
       <div className="input">
         <div className="input">
           <label htmlFor="img"></label>
-          <input placeholder="Image URL (optional)" onChange={handleChange} value={post.img} type="text" id="img_url" name="img" />
+          <input placeholder="Cover image url (optional)" onChange={handleChange} value={post.img} type="text" id="img_url" name="img" />
         </div>
 
         <div className='ckeditor-container'>

@@ -8,16 +8,17 @@ import edit from "../assets/edit.png"
 import like from "../assets/like.png"
 import password from "../functions/password";
 import getUsername from "../functions/getUsername";
+import postHTMLContent from "../components/StringToJSX";
 
 
-function Post({ supabase }) {
+function Post({ supabase, session }) {
   // hooks
   // states
   const [post, setPost] = useState({})
   const [clicked, setClicked] = useState(false)
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState("")
-  const username = getUsername() || "null";
+
 
   // get url param
   const { id } = useParams();
@@ -26,6 +27,12 @@ function Post({ supabase }) {
   const navigate = useNavigate()
 
   // === GET INFORMATION ===
+  // get user information
+  // user variables
+  const user = session ? session.user : { user_metadata: "" }
+  const username = user.user_metadata.name
+  const user_id = user.id
+  const isUserPost = user_id === post.user_id;
 
   // get our post
   const getPost = async () => {
@@ -36,7 +43,7 @@ function Post({ supabase }) {
   // get our comments for this post
   const getComments = async () => {
     const { data, error } = await supabase.from("comments").select().order("created_at", { ascending: false }).eq('post_id', id)
-    console.log("Comment data:", data)
+
     setComments(data)
   }
 
@@ -71,8 +78,7 @@ function Post({ supabase }) {
 
   // delete current post
   const deletePost = async () => {
-    const testPass = await password.authenticate(post.pass)
-    if (testPass) {
+    if (isUserPost) {
       if (confirm("Are you sure you want to delete this post?")) {
         const { error } = await supabase.from("posts").delete().eq("id", id)
         navigate("/")
@@ -80,17 +86,16 @@ function Post({ supabase }) {
         console.log("delete is cancelled")
       }
     } else {
-      alert("Wrong password!")
+      alert("You can't delete this post!'")
     }
   }
 
   // EDITING POST LOGIC
   const editPost = async () => {
-    const testPass = await password.authenticate(post.pass)
-    if (testPass) {
+    if (isUserPost) {
       navigate(`/post/${id}/edit`)
     } else {
-      alert("Wrong password!")
+      alert("You can't access this!")
     }
   }
 
@@ -98,7 +103,7 @@ function Post({ supabase }) {
   const createComment = async () => {
 
     // insert comment into database
-    const { data, error } = await supabase.from("comments").insert({ post_id: id, comment: comment, username: username })
+    const { data, error } = await supabase.from("comments").insert({ post_id: id, comment: comment, username: username, user_id: user_id })
     console.log("Comment is inserted into database...")
 
     // update the comments
@@ -109,7 +114,7 @@ function Post({ supabase }) {
   }
 
   const displayComments = comments.map((comment) => {
-    return <Comment key={comment.id} date={comment.created_at} comment={comment.comment} id={comment.id} supabase={supabase} pass={post.pass} reloadComments={getComments} username={comment.username} />
+    return <Comment key={comment.id} date={comment.created_at} comment={comment.comment} id={comment.id} supabase={supabase} reloadComments={getComments} username={comment.username} user_id={comment.user_id} session_user_id={user_id} />
   })
 
   // tagColor
@@ -120,33 +125,6 @@ function Post({ supabase }) {
     tagColor = "back-pastel-red pastel-red"
   }
 
-
-  function createMarkup() {
-    const scannedHTML = convertEmbed(post.content ? post.content : "")
-    console.log(scannedHTML)
-
-    return { __html: scannedHTML };
-  }
-
-  function postContent() {
-    return <div dangerouslySetInnerHTML={createMarkup()} />;
-  }
-
-  // find iframe
-  const convertEmbed = (htmlString) => {
-    // Use a regular expression to find the oembed element in the HTML string
-    const oembedRegex = /<oembed[^>]*>/g;
-    const oembedMatch = htmlString.match(oembedRegex);
-
-    // If an oembed element was found, convert it to an iframe element
-    if (oembedMatch) {
-      const oembedUrl = oembedMatch[0].match(/url="([^"]*)"/)[1];
-      const iframeElement = `<iframe src="${oembedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-      htmlString = htmlString.replace(oembedRegex, iframeElement);
-    }
-
-    return htmlString;
-  };
 
 
   // returns the post content
@@ -160,7 +138,7 @@ function Post({ supabase }) {
         </div>
         <h2 className="pastel-black">{post.title}</h2>
         <img className="post-image" src={post.img}></img>
-        <p>{postContent()}</p>
+        <p>{postHTMLContent(post.content)}</p>
         <p><b>{post.username ? "~ " + post.username : ""}</b></p>
 
 
@@ -170,16 +148,23 @@ function Post({ supabase }) {
           <div onClick={upVote} className="pastel-red like-image">
             <img src={like} /> <b>{post.vote} {post.vote !== 1 ? "likes" : "like"}</b>
           </div>
-          <div>
-            <img onClick={editPost} className="edit-image" src={edit} />
-            <img onClick={deletePost} className="delete-image" src={trash} />
-          </div>
+          {session && isUserPost ?
+            <div>
+              <img onClick={editPost} className="edit-image" src={edit} />
+              <img onClick={deletePost} className="delete-image" src={trash} />
+            </div>
+            : ""
+          }
         </div>
 
         {/* Comment section */}
         <div className="comments-section">
           <div className="insert-comment-container">
-            <input onKeyUp={(e) => { pressEnter(e, createComment) }} value={comment} onChange={updateComment} placeholder="Leave a comment..." type="text" />
+            {session ?
+              <input onKeyUp={(e) => { pressEnter(e, createComment) }} value={comment} onChange={updateComment} placeholder="Leave a comment..." type="text" />
+              :
+              <input disabled placeholder="Sign in to leave a comment..." type="text" />
+            }
           </div>
           <div className="comments-container">{displayComments}</div>
         </div>

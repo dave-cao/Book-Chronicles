@@ -9,12 +9,13 @@ function Navbar({ supabase, session }) {
 
   const handleLogout = () => {
     auth.logout()
+    alert("Logged out.")
   }
 
 
 
   return (
-    <nav className="navbar navbar-inverse navbar-expand-sm navbar-light">
+    <nav className="navbar navbar-inverse navbar-expand-md navbar-light">
       <Link to="/">
         <img className="navbar-brand" width="64" height="64" src="https://img.icons8.com/cute-clipart/64/book.png" alt="book" />
       </Link>
@@ -29,6 +30,7 @@ function Navbar({ supabase, session }) {
           <Link to="/" className="nav-item nav-link" href="#">Home <span className="sr-only">(current)</span></Link>
           <Link to="/create" className="nav-item nav-link" href="#">Create</Link>
           <Link to="/getBookInfo" className="nav-item nav-link" href="#">Get Book</Link>
+          <Link to="/userposts" className="nav-item nav-link" href="#">User Posts</Link>
           {session ? "" : <Link to="/signin" className="nav-item nav-link" href="#">Signin</Link>}
           {session ? <a onClick={handleLogout} className="nav-item nav-link" href="#">Logout</a> : ""}
         </div>

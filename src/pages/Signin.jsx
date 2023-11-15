@@ -1,21 +1,25 @@
 import { useState } from "react"
 import handleChange from "../functions/handleInputChange"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Auth from "../functions/auth"
 
 
 function Signin({ supabase }) {
   const auth = Auth(supabase)
   const [userInput, setUserInput] = useState({})
-  const { state } = useLocation();
+  const navigation = useNavigate();
+
 
   const handleSignIn = async () => {
+    // signs in user with given emai / pass
     const { user, session } = await auth.signIn(userInput.email, userInput.password)
 
+    // if email or password is not within database
     if (!(user || session)) {
       alert("Wrong email and / or password...")
     } else {
-      alert("Logged in...")
+      alert("Logged in.")
+      navigation("/")
     }
   }
 

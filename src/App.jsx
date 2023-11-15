@@ -11,9 +11,8 @@ import Post from './pages/Post'
 import Edit from './pages/Edit'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
+import UserPosts from './pages/UserPosts'
 
-// functions
-import Auth from "./functions/auth"
 
 
 // components
@@ -43,8 +42,6 @@ function App() {
     return () => subscription.unsubscribe()
   }, [])
 
-  console.log(session)
-
 
   return (
     <>
@@ -56,12 +53,18 @@ function App() {
         {/* The create route is protected to only users! */}
         <Route path="/create" element={
           < Protected session={session}>
-            <Create supabase={supabase} />
+            <Create supabase={supabase} session={session} />
           </Protected>
         } />
-        <Route path="/post/:id" element={<Post supabase={supabase} />} />
-        <Route path="/post/:id/edit" element={<Edit supabase={supabase} />} />
+        <Route path="/post/:id" element={<Post supabase={supabase} session={session} />} />
+
+        <Route path="/post/:id/edit" element={
+          <Protected session={session}>
+            <Edit supabase={supabase} session={session} />
+          </Protected>} />
+
         <Route path="/getBookInfo" element={<GetBookInfo />} />
+        <Route path="/userposts" element={<UserPosts supabase={supabase} />} />
         <Route path="/signup" element={<Signup supabase={supabase} />} />
         <Route path="/signin" element={<Signin supabase={supabase} />} />
         <Route path="*" element={<NotFound />} />

@@ -113,6 +113,31 @@
     margin-top: 15px;
 }
 
+
+
+.post-preview h2 {
+  text-align: left;
+  margin-bottom: 20px;
+
+}
+
+.post-preview-image {
+  max-width: 200px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.post-preview-content {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.post-preview .media, .post-preview .image {
+  display: none;
+}
+
+
 .post-preview-bot {
     display: flex;
     align-items: center;
@@ -138,12 +163,6 @@
     font-size: 0.70rem;
   }
 
-
-
-.post-preview h2 {
-    margin-bottom: 40px;
-
-}
 
 
 

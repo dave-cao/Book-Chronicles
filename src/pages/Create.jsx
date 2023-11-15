@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/post.css"
-import password from "../functions/password";
-import getUsername from "../functions/getUsername";
 
 // components
 import Form from "../components/Form";
 
-function Create({ supabase }) {
+function Create({ supabase, session }) {
   const [post, setPost] = useState({ title: "", content: "", img: "" })
   const navigate = useNavigate() // for navigation
   const { state } = useLocation();
 
-  // functions
-  const username = getUsername() || "null";
+  // user variables
+  const user = session ? session.user : { user_metadata: "" }
+  const username = user.user_metadata.name
+  const user_id = user.id
+
 
   // IF WE GRABBED A BOOK
   useEffect(() => {
@@ -36,9 +37,6 @@ function Create({ supabase }) {
       value = event.target.value
     }
 
-
-
-    console.log("name: ", name, " value: ", value);
     setPost((prev) => {
       return {
         ...prev,
@@ -50,11 +48,8 @@ function Create({ supabase }) {
   // create book on user submit and inserts into supabase
   const createPost = async () => {
 
-    // generate hashed password
-    const pass = prompt("Set a password for this post...");
-    const hash = password.generateHash(pass);
     const { data, error } = await supabase.from('posts').insert({
-      title: post.title, content: post.content, img: post.img, category: post.category, pass: hash, username: username
+      title: post.title, content: post.content, img: post.img, category: post.category, username: username, user_id: user_id
     })
     alert("Post inserted into database!")
     navigate("/")

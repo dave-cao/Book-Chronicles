@@ -21,6 +21,7 @@
     "@supabase/supabase-js": "^2.38.4",
     "bcryptjs": "^2.4.3",
     "ckeditor5-custom-build": "file:ckeditor5",
+    "ckeditor5-full-screen": "^0.0.2",
     "fuse.js": "^7.0.0",
     "luxon": "^3.4.3",
     "react": "^18.2.0",
