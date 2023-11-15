@@ -1,8 +1,18 @@
 import "../styles/navbar.css"
 import { Link } from "react-router-dom"
 import BackToTopButton from "./BackToTopButton";
+import Auth from "../functions/auth"
+import { useEffect } from "react";
 
-function Navbar() {
+function Navbar({ supabase, session }) {
+  const auth = Auth(supabase)
+
+  const handleLogout = () => {
+    auth.logout()
+  }
+
+
+
   return (
     <nav className="navbar navbar-inverse navbar-expand-sm navbar-light">
       <Link to="/">
@@ -19,6 +29,8 @@ function Navbar() {
           <Link to="/" className="nav-item nav-link" href="#">Home <span className="sr-only">(current)</span></Link>
           <Link to="/create" className="nav-item nav-link" href="#">Create</Link>
           <Link to="/getBookInfo" className="nav-item nav-link" href="#">Get Book</Link>
+          {session ? "" : <Link to="/signin" className="nav-item nav-link" href="#">Signin</Link>}
+          {session ? <a onClick={handleLogout} className="nav-item nav-link" href="#">Logout</a> : ""}
         </div>
       </div>
 
