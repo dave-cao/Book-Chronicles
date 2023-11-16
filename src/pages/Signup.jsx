@@ -21,7 +21,7 @@ function Signup({ supabase }) {
         alert("Signed up successfully")
 
         // navigate back to home page
-        navigate("/")
+        navigate("/Book-Chronicles")
 
       } else {
         alert("Error signing up, try again...")
@@ -52,7 +52,7 @@ function Signup({ supabase }) {
         <div></div>
 
         <button onClick={handleSignup} type="submit" className="red-button">Signup</button>
-        <Link to="/signin"><button type="button" className="orange-button">Sign in</button></Link>
+        <Link to="/Book-Chronicles/signin"><button type="button" className="orange-button">Sign in</button></Link>
       </form>
 
 

@@ -48,25 +48,25 @@ function App() {
       <Navbar supabase={supabase} session={session} />
 
       <Routes>
-        <Route path="/" element={<Home supabase={supabase} />} />
+        <Route path="/Book-Chronicles" element={<Home supabase={supabase} />} />
 
         {/* The create route is protected to only users! */}
-        <Route path="/create" element={
+        <Route path="/Book-Chronicles/create" element={
           < Protected session={session}>
             <Create supabase={supabase} session={session} />
           </Protected>
         } />
-        <Route path="/post/:id" element={<Post supabase={supabase} session={session} />} />
+        <Route path="/Book-Chronicles/post/:id" element={<Post supabase={supabase} session={session} />} />
 
-        <Route path="/post/:id/edit" element={
+        <Route path="/Book-Chronicles/post/:id/edit" element={
           <Protected session={session}>
             <Edit supabase={supabase} session={session} />
           </Protected>} />
 
-        <Route path="/getBookInfo" element={<GetBookInfo />} />
-        <Route path="/userposts" element={<UserPosts supabase={supabase} />} />
-        <Route path="/signup" element={<Signup supabase={supabase} />} />
-        <Route path="/signin" element={<Signin supabase={supabase} />} />
+        <Route path="/Book-Chronicles/getBookInfo" element={<GetBookInfo />} />
+        <Route path="Book-Chronicles/userposts" element={<UserPosts supabase={supabase} />} />
+        <Route path="Book-Chronicles/signup" element={<Signup supabase={supabase} />} />
+        <Route path="Book-Chronicles/signin" element={<Signin supabase={supabase} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

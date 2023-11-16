@@ -19,7 +19,7 @@ function Signin({ supabase }) {
       alert("Wrong email and / or password...")
     } else {
       alert("Logged in.")
-      navigation("/")
+      navigation("/Book-Chronicles")
     }
   }
 
@@ -42,7 +42,7 @@ function Signin({ supabase }) {
 
 
         <button onClick={handleSignIn} type="submit" className="red-button">Signin</button>
-        <Link to="/signup"><button type="submit" className="orange-button">Signup</button></Link>
+        <Link to="/Book-Chronicles/signup"><button type="submit" className="orange-button">Signup</button></Link>
       </form>
 
 

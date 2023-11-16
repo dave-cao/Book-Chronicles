@@ -16,7 +16,7 @@ function PostPreview({ id, title, created_at, vote, category, username, img_url,
   const htmlcontent = postHTMLContent(truncateContent)
 
   return (
-    <Link className="post-preview" to={`/post/${id}`}>
+    <Link className="post-preview" to={`/Book-Chronicles/post/${id}`}>
       <div className="post-preview-top">
         <p className="time-ago">Posted {created_at ? timeAgo(created_at) : " "}</p>
         <p className={`post-category ${tagColor}`}>#{category}</p>

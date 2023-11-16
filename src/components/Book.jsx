@@ -4,7 +4,7 @@ function Book({ title, author, cover_url, cover_key, description }) {
 
   const navigate = useNavigate();
   const sendBook = () => {
-    navigate("/create", { state: { title: title, author: author, cover_url: cover_url, description: description, cover_key: cover_key } })
+    navigate("/Book-Chronicles/create", { state: { title: title, author: author, cover_url: cover_url, description: description, cover_key: cover_key } })
   }
 
 
