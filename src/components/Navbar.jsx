@@ -6,8 +6,6 @@ import { useEffect } from "react";
 
 function Navbar({ supabase, session }) {
   const auth = Auth(supabase)
-  console.log(session)
-
   const handleLogout = () => {
     auth.logout()
     alert("Logged out.")

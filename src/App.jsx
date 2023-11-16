@@ -48,7 +48,7 @@ function App() {
       <Navbar supabase={supabase} session={session} />
 
       <Routes>
-        <Route path="/Book-Chronicles" element={<Home supabase={supabase} />} />
+        <Route path="/Book-Chronicles/" element={<Home supabase={supabase} session={session} />} />
 
         {/* The create route is protected to only users! */}
         <Route path="/Book-Chronicles/create" element={

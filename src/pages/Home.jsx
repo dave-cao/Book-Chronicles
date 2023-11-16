@@ -7,12 +7,14 @@ import Gear from "../components/Gear";
 
 
 
-function Home({ supabase }) {
+function Home({ supabase, session }) {
 
   // get the books from the database
   const [posts, setPosts] = useState([])
   const [sorts, setSorts] = useState({ created_at: false, vote: true })
   const [search, setSearch] = useState("")
+  const user = session ? session.user : { user_metadata: {} }
+  const user_id = user.id
 
   const getPosts = async () => {
     const { data, error } = await supabase.from("posts").select().order("created_at", { ascending: false });
@@ -32,9 +34,13 @@ function Home({ supabase }) {
 
   // display post previews
   const displayPostPreviews = () => {
+
     const searchResults = fuzzySearch(search, posts, ["title", "category", "username"])
     return searchResults.map((post) => {
-      return <PostPreview key={post.id} id={post.id} title={post.title} created_at={post.created_at} vote={post.vote} category={post.category} username={post.username} img_url={post.img} content={post.content} />
+      // check if user liked post
+      const currentUserLiked = post.user_likes[user_id]
+
+      return <PostPreview key={post.id} id={post.id} title={post.title} created_at={post.created_at} vote={post.vote} category={post.category} username={post.username} img_url={post.img} content={post.content} currentUserLiked={currentUserLiked} />
     })
   }
 

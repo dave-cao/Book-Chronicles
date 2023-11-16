@@ -52,7 +52,7 @@ function Create({ supabase, session }) {
       title: post.title, content: post.content, img: post.img, category: post.category, username: username, user_id: user_id
     })
     alert("Post inserted into database!")
-    navigate("/")
+    navigate("/Book-Chronicles")
   }
 
 
@@ -62,7 +62,7 @@ function Create({ supabase, session }) {
         <h1 className="create-post-title pastel-black">Create a <span className="pastel-orange">Post</span></h1>
         <Form handleChange={handleChange} post={post} />
         <button className="btn red-button darkAccent" onClick={createPost} post={post}>Create Post</button>
-        <Link to="/getBookInfo"><button className="btn orange-button">Get Book Info</button></Link>
+        <Link to="/Book-Chronicles/getBookInfo"><button className="btn orange-button">Get Book Info</button></Link>
       </div>
     </>
   );

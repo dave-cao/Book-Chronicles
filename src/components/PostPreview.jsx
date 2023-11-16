@@ -3,8 +3,7 @@ import timeAgo from "../functions/timeAgo"
 import like from "../assets/like.png"
 import postHTMLContent from "./StringToJSX"
 
-function PostPreview({ id, title, created_at, vote, category, username, img_url, content }) {
-  console.log(img_url)
+function PostPreview({ id, title, created_at, vote, category, username, img_url, content, currentUserLiked }) {
   let tagColor = "back-pastel-green pastel-green"
   if (category == "review") {
     tagColor = "back-pastel-purple pastel-purple";
@@ -28,7 +27,7 @@ function PostPreview({ id, title, created_at, vote, category, username, img_url,
       </div>
       <div className="post-preview-bot">
         <div className="vote-image">
-          <img src={like} className="upvotes, pastel-red" /><span className=""><b className="pastel-orange">{vote} </b></span>
+          <img src={like} className="upvotes pastel-red" /><span className=""><b className={currentUserLiked ? "pastel-orange" : ""}>{vote} </b></span>
         </div>
         <p>{username ? "~ " + username : ""}</p>
       </div>

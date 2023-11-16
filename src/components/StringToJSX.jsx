@@ -18,8 +18,6 @@ const convertEmbed = (htmlString) => {
 
 function createMarkup(HTMLContent) {
   const scannedHTML = convertEmbed(HTMLContent ? HTMLContent : "")
-  console.log(scannedHTML)
-
   return { __html: scannedHTML };
 }
 

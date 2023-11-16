@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import timeAgo from "../functions/timeAgo";
 import Comment from "../components/Comment";
@@ -6,15 +6,13 @@ import pressEnter from "../functions/pressEnter";
 import trash from "../assets/trash.png"
 import edit from "../assets/edit.png"
 import like from "../assets/like.png"
-import password from "../functions/password";
-import getUsername from "../functions/getUsername";
 import postHTMLContent from "../components/StringToJSX";
 
 
 function Post({ supabase, session }) {
   // hooks
   // states
-  const [post, setPost] = useState({})
+  const [post, setPost] = useState({ user_likes: "" })
   const [clicked, setClicked] = useState(false)
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState("")
@@ -29,7 +27,7 @@ function Post({ supabase, session }) {
   // === GET INFORMATION ===
   // get user information
   // user variables
-  const user = session ? session.user : { user_metadata: "" }
+  const user = session ? session.user : { user_metadata: {} }
   const username = user.user_metadata.name
   const user_id = user.id
   const isUserPost = user_id === post.user_id;
@@ -43,7 +41,6 @@ function Post({ supabase, session }) {
   // get our comments for this post
   const getComments = async () => {
     const { data, error } = await supabase.from("comments").select().order("created_at", { ascending: false }).eq('post_id', id)
-
     setComments(data)
   }
 
@@ -51,23 +48,44 @@ function Post({ supabase, session }) {
   useEffect(() => {
     getPost();
     getComments();
+
+    // scroll to the top when entering page
+    window.scroll(0, 0)
   }, [])
 
   // update upvote when clicked
   const upVote = async () => {
-    if (!clicked) {
-      // update await supabase...
-      const { error } = await supabase.from("posts").update({ vote: post.vote + 1 }).eq("id", id)
-      console.log("vote has been updated...")
+    // only allow upvotes if the user is logged in
+    if (session) {
 
-      // make sure it is only clicked once per visit
-      setClicked(true)
-      setPost({
-        ...post,
-        vote: post.vote + 1,
-      })
 
+
+      // handle click
+      // only like if the user is not in the post database and if the user
+      // hasn't already clicked yet (makes it so we don't have to regrab information)
+      if (!post.user_likes[user_id] && !clicked) {
+        // user likes
+        const user_likes = { ...post.user_likes, [user_id]: true }
+
+        // update await supabase...
+        const { error } = await supabase.from("posts").update({ vote: post.vote + 1, user_likes: user_likes }).eq("id", id)
+        console.log("vote has been updated...")
+
+        // make sure it is only clicked once per visit
+        setClicked(true)
+        setPost({
+          ...post,
+          vote: post.vote + 1,
+        })
+      } else {
+        console.log("Can't like a post more than once...")
+      }
+    } else {
+      // if user is not logged in, tell the user to log in
+      alert("You must be logged in to like a post!")
     }
+
+
   }
 
   // update comments while typing
@@ -81,7 +99,7 @@ function Post({ supabase, session }) {
     if (isUserPost) {
       if (confirm("Are you sure you want to delete this post?")) {
         const { error } = await supabase.from("posts").delete().eq("id", id)
-        navigate("/")
+        navigate("/Book-Chronicles")
       } else {
         console.log("delete is cancelled")
       }
@@ -93,7 +111,7 @@ function Post({ supabase, session }) {
   // EDITING POST LOGIC
   const editPost = async () => {
     if (isUserPost) {
-      navigate(`/post/${id}/edit`)
+      navigate(`/Book-Chronicles/post/${id}/edit`)
     } else {
       alert("You can't access this!")
     }
@@ -138,14 +156,14 @@ function Post({ supabase, session }) {
         </div>
         <h2 className="pastel-black">{post.title}</h2>
         <img className="post-image" src={post.img}></img>
-        <p>{postHTMLContent(post.content)}</p>
+        <div>{postHTMLContent(post.content)}</div>
         <p><b>{post.username ? "~ " + post.username : ""}</b></p>
 
 
         {/* buttons */}
 
         <div className="action-images">
-          <div onClick={upVote} className="pastel-red like-image">
+          <div onClick={upVote} className={`${post.user_likes[user_id] || clicked ? "pastel-red" : ""} like-image`}>
             <img src={like} /> <b>{post.vote} {post.vote !== 1 ? "likes" : "like"}</b>
           </div>
           {session && isUserPost ?

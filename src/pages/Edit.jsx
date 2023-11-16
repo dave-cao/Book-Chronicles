@@ -49,7 +49,7 @@ function Edit({ supabase }) {
   const updatePost = async () => {
     const { error } = await supabase.from("posts").update({ title: post.title, content: post.content, img: post.img, category: post.category }).eq("id", id)
     alert("successfully updated!")
-    navigate(`/post/${id}`) // navigate back to the home page when done
+    navigate(`/Book-Chronicles/post/${id}`) // navigate back to the home page when done
 
   }
 
