@@ -14,7 +14,8 @@ function Signup({ supabase }) {
   const handleSignup = async () => {
     // signs up user to supabase auth system
     if (userInput.name && userInput.password && userInput.email) {
-      const { user, session } = await auth.signupUser(userInput.email, userInput.password, userInput.name)
+      const [data, error] = await auth.signupUser(userInput.email, userInput.password, userInput.name)
+      const { user, session } = data;
       if (user) {
         const { data, error } = await supabase.from('users').insert({ user_id: user.id, name: user.user_metadata.name })
         console.log(data)
@@ -24,7 +25,7 @@ function Signup({ supabase }) {
         navigate("/Book-Chronicles")
 
       } else {
-        alert("Error signing up, try again...")
+        alert(error)
       }
     } else {
       alert("You need to fill in all the fields!")
@@ -42,7 +43,7 @@ function Signup({ supabase }) {
         <div></div>
 
         <label htmlFor="password"></label>
-        <input onChange={(e) => handleChange(e, setUserInput)} required placeholder="Password" id="password" name="password" type="text"></input>
+        <input onChange={(e) => handleChange(e, setUserInput)} required placeholder="Password" id="password" name="password" type="password"></input>
 
         <div></div>
 
@@ -52,7 +53,9 @@ function Signup({ supabase }) {
         <div></div>
 
         <button onClick={handleSignup} type="submit" className="red-button">Signup</button>
-        <Link to="/Book-Chronicles/signin"><button type="button" className="orange-button">Sign in</button></Link>
+        <div>
+          <Link to="/Book-Chronicles/signin">Have an account? Sign in!</Link>
+        </div>
       </form>
 
 

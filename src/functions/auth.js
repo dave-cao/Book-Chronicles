@@ -6,8 +6,7 @@ const Auth = (supabase) => {
     // signs up user, does not sign in user
     async signupUser(email, password, name) {
       const { data, error } = await supabase.auth.signUp({ email: email, password: password, options: { data: { name: name } } })
-      console.log(data, error)
-      return data
+      return [data, error]
     },
 
     // signs in user
@@ -16,8 +15,8 @@ const Auth = (supabase) => {
         email: email,
         password: password,
       })
-      console.log(data)
-      return data
+      console.log(data, error)
+      return [data, error]
     },
 
     // get current session, if user is not logged in, this will be null

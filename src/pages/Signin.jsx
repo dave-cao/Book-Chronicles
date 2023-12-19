@@ -12,11 +12,12 @@ function Signin({ supabase }) {
 
   const handleSignIn = async () => {
     // signs in user with given emai / pass
-    const { user, session } = await auth.signIn(userInput.email, userInput.password)
+    const [data, error] = await auth.signIn(userInput.email, userInput.password)
+    const { user, session } = data;
 
     // if email or password is not within database
     if (!(user || session)) {
-      alert("Wrong email and / or password...")
+      alert(error)
     } else {
       alert("Logged in.")
       navigation("/Book-Chronicles")
@@ -35,14 +36,15 @@ function Signin({ supabase }) {
         <div></div>
 
         <label htmlFor="password"></label>
-        <input onChange={(e) => handleChange(e, setUserInput)} required placeholder="Password" id="password" name="password" type="text"></input>
+        <input onChange={(e) => handleChange(e, setUserInput)} required placeholder="Password" id="password" name="password" type="password"></input>
 
         <div></div>
 
 
-
         <button onClick={handleSignIn} type="submit" className="red-button">Signin</button>
-        <Link to="/Book-Chronicles/signup"><button type="submit" className="orange-button">Signup</button></Link>
+        <div>
+          <Link to="/Book-Chronicles/signup">Not a member? Signup!</Link>
+        </div>
       </form>
 
 
