@@ -22,8 +22,8 @@ import Protected from './components/Protected'
 
 // supabase
 import { createClient } from "@supabase/supabase-js"
-const supabaseURL = "https://wfmzmjdkdoryaeunljkv.supabase.co"
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndmbXptamRrZG9yeWFldW5samt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTk0MDc2NTcsImV4cCI6MjAxNDk4MzY1N30.zRjzq2AcsGmIx0GBvfPoDyj5BBWlAwHsjc3yEV8vXcQ"
+const supabaseURL = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
 const supabase = createClient(supabaseURL, supabaseKey)
 
 function App() {
