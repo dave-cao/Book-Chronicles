@@ -31,7 +31,10 @@ function UserPosts({ supabase }) {
 
 
   return (
-    <div>{displayUsers()}</div>
+    <div>
+      <h1>Click on a user to see their posts!</h1>
+      {displayUsers()}
+    </div>
   )
 }
 
