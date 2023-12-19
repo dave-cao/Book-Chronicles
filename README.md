@@ -1,6 +1,6 @@
 # Web Development Final Project - *Bookshelf Chronicles*
 
-Submitted by: **David Cao 1**
+Submitted by: **David Cao**
 
 This web app: **A forum-like website used to track book reviews / recommendations for me and my friends!**
 
