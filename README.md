@@ -9,7 +9,7 @@ author: David Cao
 <br>
 
 <!-- Video walkthrough or image -->
-<img src='./output2x.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='./bookshelf.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <br>
 
