@@ -9,7 +9,8 @@ author: David Cao
 <br>
 
 <!-- Video walkthrough or image -->
-<img src='./bookshelf.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+https://github.com/dave-cao/Book-Chronicles/assets/63488152/f7149e1e-0429-4911-a744-e0fbd2f86ecd
+
 
 <br>
 
