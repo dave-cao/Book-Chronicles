@@ -5,7 +5,6 @@ import password from "../functions/password"
 function Comment({ date, comment, id, supabase, reloadComments, username, user_id, session_user_id }) {
   const isUserComment = user_id === session_user_id
   const deleteComment = async () => {
-    console.log(isUserComment)
     if (isUserComment) {
       if (confirm("Are you sure you want to delete this comment?")) {
         const { error } = await supabase.from("comments").delete().eq("id", id)

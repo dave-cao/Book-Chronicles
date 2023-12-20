@@ -18,7 +18,6 @@ function Signup({ supabase }) {
       const { user, session } = data;
       if (user) {
         const { data, error } = await supabase.from('users').insert({ user_id: user.id, name: user.user_metadata.name })
-        console.log(data)
         alert("Signed up successfully")
 
         // navigate back to home page

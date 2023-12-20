@@ -14,7 +14,6 @@ function Edit({ supabase }) {
   const getPost = async () => {
     // get our post
     const { data, error } = await supabase.from("posts").select().eq('id', id)
-    console.log(data)
     setPost(data[0])
   }
   // run get post first time entering post page
@@ -36,14 +35,12 @@ function Edit({ supabase }) {
       name = event.target.name
       value = event.target.value
     }
-    console.log("Name: ", name, " value: ", value);
     setPost((prev) => {
       return {
         ...prev,
         [name]: value,
       }
     })
-    console.log(value)
   }
 
   const updatePost = async () => {

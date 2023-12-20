@@ -15,20 +15,17 @@ const Auth = (supabase) => {
         email: email,
         password: password,
       })
-      console.log(data, error)
       return [data, error]
     },
 
     // get current session, if user is not logged in, this will be null
     async getSession() {
       const { data, error } = await supabase.auth.getSession()
-      console.log(data)
       return data
     },
 
     async logout() {
       const { error } = await supabase.auth.signOut()
-      console.log(error)
     },
 
     // gets the auth events that occur (not sure if we even need this)

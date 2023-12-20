@@ -1,67 +1,47 @@
-# Web Development Final Project - *Bookshelf Chronicles*
+---
+created: 2023-12-20
+updated: 2023-12-20
+author: David Cao
+---
 
-Submitted by: **David Cao 1**
+<h1 align='center'>📚 Book Chronicles</h1>
+<h4 align='center'>A forum-like website used to track book reviews / recommendations for me and my friends!</h4>
+<br>
 
-This web app: **A forum-like website used to track book reviews / recommendations for me and my friends!**
-
-Time spent: **24** hours spent in total
-
-## Required Features
-
-The following **required** functionality is completed:
-
-- [X] **A create form that allows the user to create posts**
-- [X] **Posts have a title and optionally additional textual content and/or an image added as an external image URL**
-- [X] **A home feed displaying previously created posts**
-- [X] **By default, the time created, title, and number of upvotes for each post is shown on the feed**
-- [X] **Clicking on a post shall direct the user to a new page for the selected post**
-- [X] **Users can sort posts by either their created time or upvotes count**
-- [X] **Users can search for posts by title**
-- [X] **A separate post page for each created post, where any additional information is shown is linked whenever a user clicks a post**
-- [X] **Users can leave comments underneath a post on the post's separate page**
-- [X] **Each post should have an upvote button on the post's page. Each click increases its upvotes count by one and users can upvote any number of times**
-- [X] **A previously created post can be edited or deleted from its post page**
-
-The following **optional** features are implemented:
-
-- [X] Users can only edit and deleted posts or delete comments by entering the secret key, which is set by the user during post creation
-    - each individual post, when created, has to be set with a secret key. That secret key is salted and hashed before getting sent to the database.
-- [X] Upon launching the web app, the user is assigned a random user ID. It will be associated with all posts and comments that they make and displayed on them.
-    - I have it so that the website will prompt the user for their name when they try to comment or create a post. If they don't then an automatic random name will be given to them.
-- [ ] Users can repost a previous post by referencing its post ID. On the post page of the new post, the referenced post is displayed and linked, creating a thread
-- [ ] Users can customize the interface of the web app
-- [X] Users can share and view web videos
-- [X] Users can set flags while creating a post. Then users can filter posts by flags on the home feed.
-    - My search bar can filter by category and by title of the post!
-    - Uses fuzzy searching by the Fuse.js library
-- [ ] Users can upload images directly from their local machine as an image file
-- [X] Display a loading animation whenever data is being fetched
-
-The following **additional** features are implemented:
-
-* [X] Loads of custom css personalization, I tried to go for a more pastel type look
-* [X] Mobile responsive
-* [X] Utilizes **open library** api to fetch books and displays it in a nice list. Once a user clicks on one of the books fetched from the list, it will take them to the create a page with the title, image, and content filled out to help them get started on reviewing that book! 
-* [X] Able to upload images, media, change the header etc with a custom built CKEditor5.
-
-
-
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
+<!-- Video walkthrough or image -->
 <img src='./output2x.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF recorded using OBS and converted to GIF (.mkv --> .gif) by FFMPEG
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+<br>
+<br>
+
+<!-- List links to the project here (eg: live-link, youtube video) -->
+- **Visit the project at: https://dave-cao.github.io/Book-Chronicles/**
+- **Demonstration Video: coming soon...**
+
+
+<!-- ABOUT THE PROJECT -->
+## About
+
+This project is a book review website I created as a place to store my book reviews and recommendations. I wanted to create a hub where me and my friends could geek out on books that we've read and talk about them!
+
+The website features a login system, a rich text editor to write your reviews, and the usage of a books API to grab book data!
+
+### Why Did I Build it?
+
+I built this as a final project for CodePath Intermediate Web Development course. But also, it's a cool place to store my book reviews!
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+1. Go to https://dave-cao.github.io/Book-Chronicles/
+2. Sign up and make an account
+3. Create a post!
+
+_For a more comprehensive example of using this application, refer to this [video](coming soon...)_
 
 ## Notes
 
-This was by far the project that I spent the most time on and found the most rewarding. I had to learn a lot of different things with this project
+This was by far the project that I spent the most time on and found the most rewarding during this course. I had to learn a lot of different things with this project
 and it was definitely very satisfying finishing. 
 
 Some things I had challenges with:
@@ -77,13 +57,43 @@ Some things I had challenges with:
     - For some reason they don't have an up to date documentation for getting covers on their website, I had to use a different url to get the cover and a different one to get the description! Then I combined it at the end...
 
 Additionally, Netlify flagged me for being a spam account so I couldn't make a Netlify account to deploy my website. Good thing I could use Github Pages to deploy it pretty easily. 
-Here is the link to the deployed site: https://dave-cao.github.io/Book-Chronicles/
 
+
+<!-- ROADMAP -->
+## Roadmap
+
+For now I won't be working on this other than adding my book reviews as I continue reading. However, I do want to make it so it only shows the top `x` amount of posts per page. And then at the bottom, it has a next button.
+
+Some additional features that I am thinking about is embedding a post within a post. Perhaps I reviewed a book and another friend wants to review the same book. We can have it on the same thread.
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- CONTACT -->
+## Contact
+
+#### David Cao
+- Email: sirdavidcao@gmail.com
+- Personal Website: https://davidcao.xyz/
+- [Other Projects](https://davidcao.xyz/ProjectsPage/index.html)
+- [Youtube](https://www.youtube.com/channel/UCEnBPbnNnqhQIIhW1uLXrLA)
+- [Linkedin](https://www.linkedin.com/in/david-cao99/)
 
 
 ## License
 
-    Copyright [2023] [David Cao]
+    Copyright [2024] [David Cao]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

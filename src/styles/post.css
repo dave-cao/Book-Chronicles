@@ -25,7 +25,8 @@
 
 
 
-.red-button, .orange-button {
+.red-button,
+.orange-button {
   padding: 8px 12px;
   margin: 5px;
   border: 1px solid var(--borderColor);
@@ -41,7 +42,8 @@
   background-color: var(--textAccent);
 }
 
-.red-button:hover, .orange-button:hover {
+.red-button:hover,
+.orange-button:hover {
   background-color: #ff4500;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -52,7 +54,8 @@ form {
   width: 100%;
 }
 
-.input input, textarea {
+.input input,
+textarea {
   max-width: 700px;
   width: 90%;
   margin: 10px;
@@ -116,20 +119,22 @@ div.ck {
 }
 
 .post-category {
-    background-color: #ffd3db;
-    border-radius: 20px;
-    padding: 7px;
-    font-size: 0.70rem;
-  }
+  background-color: #ffd3db;
+  border-radius: 20px;
+  padding: 7px;
+  font-size: 0.70rem;
+}
 
 .post h2 {
   font-weight: bold;
   font-size: 2.5rem;
 }
 
-.post-image, .post p img {
-  width: auto;
-  max-width: 420px;
+.post-image,
+.post p img,
+.post .image img {
+  width: 100%;
+  max-width: 600px;
   margin-top: 10px;
   margin-bottom: 30px;
   border-radius: 10px;
@@ -171,12 +176,19 @@ div.ck {
 }
 
 @keyframes jump {
-  0%, 20%, 50%, 80%, 100% {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-10px);
   }
+
   60% {
     transform: translateY(-5px);
   }
@@ -209,12 +221,13 @@ div.ck {
 }
 
 .comments-container {
-  
+
   margin-top: 20px;
-  border-bottom: #c0c0c0  solid 1px;
+  border-bottom: #c0c0c0 solid 1px;
 }
+
 .comment {
-  border-top: #c0c0c0  solid 1px;
+  border-top: #c0c0c0 solid 1px;
   padding: 10px;
   padding-bottom: 0px;
 }
@@ -227,6 +240,7 @@ div.ck {
   font-size: 0.85rem;
 
 }
+
 .comment img {
   width: 10px;
   opacity: 0.3;
@@ -240,6 +254,7 @@ div.ck {
 .time-ago {
   color: #A9A9A9;
 }
+
 #root div div p:nth-child(4) div figure div div {
   width: 100% !important;
 }
@@ -257,12 +272,13 @@ iframe {
 
 @media only screen and (max-width: 700px) {
 
-.post-image, .post p img {
-  width: 100%;
-  max-width: 420px;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  border-radius: 10px;
-  height: auto;
-}
+  .post-image,
+  .post p img {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    height: auto;
+  }
 }

@@ -91,7 +91,6 @@ function Post({ supabase, session }) {
   // update comments while typing
   const updateComment = (e) => {
     setComment(e.target.value)
-    console.log(e.target.value)
   }
 
   // delete current post
