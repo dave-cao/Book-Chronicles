@@ -133,8 +133,8 @@ div.ck {
 .post-image,
 .post p img,
 .post .image img {
-  width: 100%;
-  max-width: 600px;
+  width: auto;
+  max-width: 620px;
   margin-top: 10px;
   margin-bottom: 30px;
   border-radius: 10px;
@@ -273,7 +273,8 @@ iframe {
 @media only screen and (max-width: 700px) {
 
   .post-image,
-  .post p img {
+  .post p img,
+  .post .image img {
     width: 100%;
     max-width: 420px;
     margin-top: 10px;

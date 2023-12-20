@@ -12,7 +12,6 @@ author: David Cao
 <img src='./output2x.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <br>
-<br>
 
 <!-- List links to the project here (eg: live-link, youtube video) -->
 - **Visit the project at: https://dave-cao.github.io/Book-Chronicles/**
