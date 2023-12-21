@@ -1,0 +1,10 @@
+{
+	"plugins": [
+		{
+			"name": "Full screen",
+			"className": "FullScreen",
+			"description": "Adds a full screen support similar to the maximize plugin in ckeditor 4.",
+			"path": "src/fullscreen.js"
+		}
+	]
+}

@@ -13,14 +13,14 @@ import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 import {
-	AutoImage,
-	Image,
-	ImageCaption,
-	ImageInsert,
-	ImageResize,
-	ImageStyle,
-	ImageToolbar,
-	ImageUpload
+    AutoImage,
+    Image,
+    ImageCaption,
+    ImageInsert,
+    ImageResize,
+    ImageStyle,
+    ImageToolbar,
+    ImageUpload
 } from '@ckeditor/ckeditor5-image';
 import { Indent } from '@ckeditor/ckeditor5-indent';
 import { AutoLink, Link, LinkImage } from '@ckeditor/ckeditor5-link';
@@ -30,72 +30,75 @@ import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
+import FullScreen from '../plugins/fullscreen/src/fullscreen'
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
 // See https://ckeditor.com/docs/ckeditor5/latest/installation/plugins/installing-plugins.html for details.
 
 class Editor extends InlineEditor {
-	public static override builtinPlugins = [
-		Alignment,
-		AutoImage,
-		AutoLink,
-		Autoformat,
-		Base64UploadAdapter,
-		BlockQuote,
-		Bold,
-		Essentials,
-		Heading,
-		HorizontalLine,
-		Image,
-		ImageCaption,
-		ImageInsert,
-		ImageResize,
-		ImageStyle,
-		ImageToolbar,
-		ImageUpload,
-		Indent,
-		Italic,
-		Link,
-		LinkImage,
-		List,
-		MediaEmbed,
-		Paragraph,
-		PasteFromOffice,
-		TextTransformation
-	];
+    public static override builtinPlugins = [
+        Alignment,
+        AutoImage,
+        AutoLink,
+        Autoformat,
+        Base64UploadAdapter,
+        BlockQuote,
+        Bold,
+        Essentials,
+        Heading,
+        HorizontalLine,
+        Image,
+        ImageCaption,
+        ImageInsert,
+        ImageResize,
+        ImageStyle,
+        ImageToolbar,
+        ImageUpload,
+        Indent,
+        Italic,
+        Link,
+        LinkImage,
+        List,
+        MediaEmbed,
+        Paragraph,
+        PasteFromOffice,
+        TextTransformation,
+        FullScreen,
+    ];
 
-	public static override defaultConfig = {
-		toolbar: {
-			items: [
-				'heading',
-				'|',
-				'bold',
-				'italic',
-				'link',
-				'bulletedList',
-				'numberedList',
-				'|',
-				'alignment',
-				'|',
-				'imageInsert',
-				'blockQuote',
-				'mediaEmbed',
-				'undo',
-				'redo'
-			]
-		},
-		language: 'en',
-		image: {
-			toolbar: [
-				'imageTextAlternative',
-				'toggleImageCaption',
-				'imageStyle:inline',
-				'imageStyle:block',
-				'imageStyle:side',
-				'linkImage'
-			]
-		}
-	};
+    public static override defaultConfig = {
+        toolbar: {
+            items: [
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'link',
+                'bulletedList',
+                'numberedList',
+                '|',
+                'alignment',
+                '|',
+                'imageInsert',
+                'blockQuote',
+                'mediaEmbed',
+                'undo',
+                'redo',
+                'fullscreen',
+            ]
+        },
+        language: 'en',
+        image: {
+            toolbar: [
+                'imageTextAlternative',
+                'toggleImageCaption',
+                'imageStyle:inline',
+                'imageStyle:block',
+                'imageStyle:side',
+                'linkImage'
+            ]
+        }
+    };
 }
 
 export default Editor;
