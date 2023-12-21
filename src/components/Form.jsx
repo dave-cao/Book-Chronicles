@@ -4,6 +4,11 @@ import Editor from "../../ckeditor5/build/ckeditor"
 
 
 function Form({ handleChange, post }) {
+
+  const fullscreen = (editor) => {
+    console.log("hello")
+  }
+
   return (
     <form>
       <div className="input">
@@ -24,24 +29,30 @@ function Form({ handleChange, post }) {
               },
               placeholder: "Content (optional)",
               toolbar: {
-                shouldNotGroupWhenFull: true
+                shouldNotGroupWhenFull: true,
+              },
+              fullscreen: {
+                closeOnEscape: true,
+                closeOnClick: false,
               }
             }}
             editor={Editor}
             data={post.content ? post.content : ""}
             onReady={editor => {
-              // You can store the "editor" and use when it is needed.
               console.log('Editor is ready to use!', editor);
+              editor.editing.view.document.on("click", (evt, data) => {
+                fullscreen(editor);
+              })
             }}
             onChange={(event, editor) => {
               const data = editor.getData();
               handleChange(editor);
             }}
           />
-
-
-
         </div>
+
+
+
 
 
 
@@ -57,7 +68,7 @@ function Form({ handleChange, post }) {
         <label className="radio" htmlFor="recommend">Recommend</label><br />
 
       </div>
-    </form>
+    </form >
   )
 }
 

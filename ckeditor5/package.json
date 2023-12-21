@@ -24,7 +24,8 @@
     "@ckeditor/ckeditor5-paragraph": "40.0.0",
     "@ckeditor/ckeditor5-paste-from-office": "40.0.0",
     "@ckeditor/ckeditor5-typing": "40.0.0",
-    "@ckeditor/ckeditor5-upload": "40.0.0"
+    "@ckeditor/ckeditor5-upload": "40.0.0",
+    "ckeditor5-full-screen": "^0.0.2"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-translations": "^32.1.2",
