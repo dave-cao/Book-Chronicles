@@ -3,7 +3,6 @@ created: 2023-12-20
 updated: 2023-12-20
 author: David Cao
 ---
-
 <h1 align='center'>📚 Book Chronicles</h1>
 <h4 align='center'>A forum-like website used to track book reviews / recommendations for me and my friends!</h4>
 <br>
