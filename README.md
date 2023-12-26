@@ -45,12 +45,12 @@ and it was definitely very satisfying finishing.
 
 Some things I had challenges with:
 
-1. Figuring out how to salt and hash a website using bcrypt. I found out that bcrypt doesn't work with React so I had to use a bcryptjs instead so that took a while to figure out.
+1. Figuring out how to salt and hash a password using bcrypt. I found out that bcrypt doesn't work with React so I had to use a bcryptjs instead so that took a while to figure out.
 2. Figuring out how to use a custom build CKEditor5
     - I really wanted to be able to upload images via URL and the only way to do that was a custom build of CKEditor5. Nonetheless, I figured it out after a long time
 3. Working with media embeds
     - For some reason, CKEditor5 sends back media as an oembed and not an iframe. I had to use regex to go through my HTML string and filter the oembeds, and change them into iframes! It was pretty crazy.
-4. Styling too a VERY long time. I originally was using bootstrap, but after a certain point, it became faster for me to just use my own type of bootstrap. That is, create classes that style certain things and just adding them to the divs! For example, I had a 'red-button' class that I could just tag on the buttons I wanted red.
+4. Styling took a VERY long time. I originally was using bootstrap, but after a certain point, it became faster for me to just use my own type of bootstrap. That is, create classes that style certain things and just adding them to the divs! For example, I had a 'red-button' class that I could just tag on the buttons I wanted red.
 5. Learning local storage was pretty cool, if I had more time, I could probably learn how to utilize this to upload images itself. 
 6. Using the Open library API and getting cover images.
     - For some reason they don't have an up to date documentation for getting covers on their website, I had to use a different url to get the cover and a different one to get the description! Then I combined it at the end...
