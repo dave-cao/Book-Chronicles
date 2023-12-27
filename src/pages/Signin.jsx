@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom"
 import Auth from "../functions/auth"
 import "../styles/sign.css"
 
+// better alerts
+import toast, { Toaster } from "react-hot-toast";
+
 
 function Signin({ supabase }) {
   const auth = Auth(supabase)
@@ -18,10 +21,13 @@ function Signin({ supabase }) {
 
     // if email or password is not within database
     if (!(user || session)) {
-      alert(error)
+      toast.error(error.message)
     } else {
-      alert("Logged in.")
-      navigation("/Book-Chronicles")
+      // timeout for 2 seconds?
+      toast.success("Logged in.")
+      setTimeout(() => {
+        navigation("/Book-Chronicles")
+      }, 1000);
     }
   }
 
@@ -52,6 +58,7 @@ function Signin({ supabase }) {
 
       </div>
 
+      <Toaster />
     </div>
   )
 }

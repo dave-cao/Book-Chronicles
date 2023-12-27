@@ -5,6 +5,8 @@ import PostPreview from "../components/PostPreview";
 import "../styles/home.css"
 import Gear from "../components/Gear";
 
+import toast, { Toaster } from "react-hot-toast";
+
 
 
 function Home({ supabase, session }) {
@@ -120,6 +122,8 @@ function Home({ supabase, session }) {
 
         {displayPostPreviews().length !== 0 ? displayPostPreviews() : <Gear />}
       </div>
+
+      <Toaster />
     </>
   )
 }
