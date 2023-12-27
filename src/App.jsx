@@ -19,6 +19,8 @@ import UserPost from './pages/UserPost'
 // components
 import Navbar from './components/Navbar'
 import Protected from './components/Protected'
+import Footer from './components/Footer'
+import { Toaster } from 'react-hot-toast'
 
 // supabase
 import { createClient } from "@supabase/supabase-js"
@@ -46,35 +48,37 @@ function App() {
 
   return (
     <>
-      <Navbar supabase={supabase} session={session} />
+      <div className='main-content'>
+        <Navbar supabase={supabase} session={session} />
+        <Routes>
+          <Route path="/Book-Chronicles/" element={<Home supabase={supabase} session={session} />} />
 
-      <Routes>
-        <Route path="/Book-Chronicles/" element={<Home supabase={supabase} session={session} />} />
+          {/* The create route is protected to only users! */}
+          <Route path="/Book-Chronicles/create" element={
+            <Protected session={session}>
+              <Create supabase={supabase} session={session} />
+            </Protected>
+          } />
 
-        {/* The create route is protected to only users! */}
-        <Route path="/Book-Chronicles/create" element={
-          <Protected session={session}>
-            <Create supabase={supabase} session={session} />
-          </Protected>
-        } />
+          {/* The edit of a post is protected */}
+          <Route path="/Book-Chronicles/post/:id" element={<Post supabase={supabase} session={session} />} />
+          <Route path="/Book-Chronicles/post/:id/edit" element={
+            <Protected session={session}>
+              <Edit supabase={supabase} session={session} />
+            </Protected>} />
 
-        {/* The edit of a post is protected */}
-        <Route path="/Book-Chronicles/post/:id" element={<Post supabase={supabase} session={session} />} />
-        <Route path="/Book-Chronicles/post/:id/edit" element={
-          <Protected session={session}>
-            <Edit supabase={supabase} session={session} />
-          </Protected>} />
+          {/* User posts path */}
+          <Route path="/Book-Chronicles/users/:id" element={<UserPost supabase={supabase} session={session} />} />
 
-        {/* User posts path */}
-        <Route path="/Book-Chronicles/users/:id" element={<UserPost supabase={supabase} session={session} />} />
-
-        <Route path="/Book-Chronicles/getBookInfo" element={<GetBookInfo />} />
-        <Route path="Book-Chronicles/userposts" element={<UserPosts supabase={supabase} />} />
-        <Route path="Book-Chronicles/signup" element={<Signup supabase={supabase} />} />
-        <Route path="Book-Chronicles/signin" element={<Signin supabase={supabase} />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-
+          <Route path="/Book-Chronicles/getBookInfo" element={<GetBookInfo />} />
+          <Route path="Book-Chronicles/userposts" element={<UserPosts supabase={supabase} />} />
+          <Route path="Book-Chronicles/signup" element={<Signup supabase={supabase} />} />
+          <Route path="Book-Chronicles/signin" element={<Signin supabase={supabase} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Toaster />
+      </div>
+      <Footer />
     </>
   )
 }

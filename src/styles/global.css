@@ -12,6 +12,11 @@
   --borderColor: #87ceeb;
 }
 
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--background);
@@ -103,4 +108,23 @@ body {
   height: 42px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.footer-container {
+  background-color: var(--backgroundAccent);
+  bottom: 0;
+  margin: 10px;
+}
+
+
+.footer-name {
+  padding-bottom: 35px;
+}
+
+footer button:hover {
+  border: #87ceeb 3px solid;
+}
+
+.main-content {
+  min-height: calc(100vh - 187px)
 }

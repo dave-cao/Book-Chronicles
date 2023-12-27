@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import "../styles/post.css"
+import { toast } from "react-hot-toast";
 
 
 function Edit({ supabase }) {
@@ -45,7 +46,7 @@ function Edit({ supabase }) {
 
   const updatePost = async () => {
     const { error } = await supabase.from("posts").update({ title: post.title, content: post.content, img: post.img, category: post.category }).eq("id", id)
-    alert("successfully updated!")
+    toast.success("successfully updated!")
     navigate(`/Book-Chronicles/post/${id}`) // navigate back to the home page when done
 
   }
@@ -56,7 +57,7 @@ function Edit({ supabase }) {
       <div className="create-container">
         <h1 className="create-post-title pastel-black">Update <span className="pastel-orange">Post</span></h1>
         <Form handleChange={handleChange} post={post} />
-        <button className="btn orange-button" onClick={updatePost}>Update Post</button>
+        <button className="btn orange-button create-button" onClick={updatePost}>Update Post</button>
       </div>
     </div>
   )

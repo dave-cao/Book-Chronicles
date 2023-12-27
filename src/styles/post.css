@@ -48,6 +48,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.create-button {
+  margin-bottom: 20px !important;
+}
+
 
 /* FORM */
 form {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import toast from "react-hot-toast";
 
 function UserPosts({ supabase }) {
   const [users, setUsers] = useState([])
@@ -32,7 +33,13 @@ function UserPosts({ supabase }) {
    * Get's user data when first load in page
   */
   useEffect(() => {
-    getUsers();
+    const gettingUsers = getUsers();
+    toast.promise(gettingUsers, {
+      loading: 'Grabbing all users...',
+      success: "Click on a user to see their posts!",
+      error: "Error while getting users..."
+
+    })
   }, [])
 
   const displayUsers = () => {
@@ -44,7 +51,6 @@ function UserPosts({ supabase }) {
 
   return (
     <div>
-      <h1>Click on a user to see their posts!</h1>
       {displayUsers()}
     </div>
   )

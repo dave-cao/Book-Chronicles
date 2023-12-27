@@ -4,6 +4,7 @@ import "../styles/post.css"
 
 // components
 import Form from "../components/Form";
+import { toast } from "react-hot-toast";
 
 function Create({ supabase, session }) {
   const [post, setPost] = useState({ title: "", content: "", img: "" })
@@ -51,7 +52,7 @@ function Create({ supabase, session }) {
     const { data, error } = await supabase.from('posts').insert({
       title: post.title, content: post.content, img: post.img, category: post.category, username: username, user_id: user_id
     })
-    alert("Post inserted into database!")
+    toast.success("Post inserted into database!")
     navigate("/Book-Chronicles")
   }
 
@@ -61,8 +62,8 @@ function Create({ supabase, session }) {
       <div className="create-container">
         <h1 className="create-post-title pastel-black">Create a <span className="pastel-orange">Post</span></h1>
         <Form handleChange={handleChange} post={post} />
-        <button className="btn red-button darkAccent" onClick={createPost} post={post}>Create Post</button>
-        <Link to="/Book-Chronicles/getBookInfo"><button className="btn orange-button">Get Book Info</button></Link>
+        <button className="btn red-button darkAccent create-button" onClick={createPost} post={post}>Create Post</button>
+        <Link to="/Book-Chronicles/getBookInfo"><button className="btn create-button orange-button">Get Book Info</button></Link>
       </div>
     </>
   );

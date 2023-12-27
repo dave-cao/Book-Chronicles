@@ -5,7 +5,7 @@ import PostPreview from "../components/PostPreview";
 import "../styles/home.css"
 import Gear from "../components/Gear";
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 
 
@@ -26,7 +26,12 @@ function Home({ supabase, session }) {
 
   // get books when user goes to home page
   useEffect(() => {
-    getPosts()
+    const gettingPosts = getPosts();
+    toast.promise(gettingPosts, {
+      loading: 'Loading your posts...',
+      success: 'Bookshelf Loaded',
+      error: 'Error when fetching',
+    })
   }, [])
 
   // update the search bar state values
@@ -119,11 +124,10 @@ function Home({ supabase, session }) {
 
       {/* the post previews */}
       <div className="post-preview-container">
-
-        {displayPostPreviews().length !== 0 ? displayPostPreviews() : <Gear />}
+        {displayPostPreviews()}
       </div>
 
-      <Toaster />
+      <div className="push"></div>
     </>
   )
 }

@@ -7,6 +7,7 @@ import trash from "../assets/trash.png"
 import edit from "../assets/edit.png"
 import like from "../assets/like.png"
 import postHTMLContent from "../components/StringToJSX";
+import toast from "react-hot-toast";
 
 
 function Post({ supabase, session }) {
@@ -46,7 +47,12 @@ function Post({ supabase, session }) {
 
   // get information first time entering post page
   useEffect(() => {
-    getPost();
+    const gettingPost = getPost();
+    toast.promise(gettingPost, {
+      loading: 'Loading your post...',
+      success: 'Post loaded!',
+      error: "Couldn't get your post!"
+    })
     getComments();
 
     // scroll to the top when entering page
@@ -82,7 +88,7 @@ function Post({ supabase, session }) {
       }
     } else {
       // if user is not logged in, tell the user to log in
-      alert("You must be logged in to like a post!")
+      toast.error("You must be logged in to like a post!")
     }
 
 
@@ -103,7 +109,7 @@ function Post({ supabase, session }) {
         console.log("delete is cancelled")
       }
     } else {
-      alert("You can't delete this post!'")
+      toast.error("You can't delete this post!'")
     }
   }
 
@@ -112,7 +118,7 @@ function Post({ supabase, session }) {
     if (isUserPost) {
       navigate(`/Book-Chronicles/post/${id}/edit`)
     } else {
-      alert("You can't access this!")
+      toast.error("You can't access this!")
     }
   }
 
@@ -186,6 +192,7 @@ function Post({ supabase, session }) {
           <div className="comments-container">{displayComments}</div>
         </div>
       </div>
+
     </div>
   )
 }

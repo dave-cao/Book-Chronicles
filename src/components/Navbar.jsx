@@ -3,12 +3,13 @@ import { Link } from "react-router-dom"
 import BackToTopButton from "./BackToTopButton";
 import Auth from "../functions/auth"
 import { useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 function Navbar({ supabase, session }) {
   const auth = Auth(supabase)
   const handleLogout = () => {
     auth.logout()
-    alert("Logged out.")
+    toast("Logged out.", { icon: "👋" })
   }
 
 

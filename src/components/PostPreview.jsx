@@ -22,8 +22,11 @@ function PostPreview({ id, title, created_at, vote, category, username, img_url,
       </div>
       <div className="post-preview-middle">
         <h2 className="pastel-black">{title}</h2>
-        {img_url ? <img className="post-preview-image" src={img_url} /> : ""}
-        <div className="post-preview-content">{htmlcontent} </div>
+        <div className="post-preview-img-content">
+          {img_url ?
+            <img className="post-preview-image" src={img_url} /> : ""}
+          <div className="post-preview-content">{htmlcontent} </div>
+        </div>
       </div>
       <div className="post-preview-bot">
         <div className="vote-image">

@@ -4,6 +4,9 @@ import handleChange from "../functions/handleInputChange";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/sign.css"
 
+// better alerts
+import toast, { Toaster } from "react-hot-toast";
+
 
 function Signup({ supabase }) {
   const auth = Auth(supabase)
@@ -19,16 +22,16 @@ function Signup({ supabase }) {
       const { user, session } = data;
       if (user) {
         const { data, error } = await supabase.from('users').insert({ user_id: user.id, name: user.user_metadata.name })
-        alert("Signed up successfully")
+        toast.success("Signed up successfully!")
 
         // navigate back to home page
         navigate("/Book-Chronicles")
 
       } else {
-        alert(error)
+        toast.error(error.message)
       }
     } else {
-      alert("You need to fill in all the fields!")
+      toast.error("You need to fill in all the fields!")
     }
   }
 
@@ -39,16 +42,16 @@ function Signup({ supabase }) {
         <h1 className="sign-title">Sign Up</h1>
         <form onSubmit={(e) => e.preventDefault()}>
           <label htmlFor="email"></label>
-          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} required placeholder="Email" id="email" name="email" type="email"></input>
+          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} placeholder="Email" id="email" name="email" type="email"></input>
           <div></div>
 
           <label htmlFor="password"></label>
-          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} required placeholder="Password" id="password" name="password" type="password"></input>
+          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} placeholder="Password" id="password" name="password" type="password"></input>
 
           <div></div>
 
           <label htmlFor="name"></label>
-          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} required placeholder="Display Name" id="name" name="name" type="text"></input>
+          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} placeholder="Display Name" id="name" name="name" type="text"></input>
 
           <div></div>
 
@@ -58,8 +61,6 @@ function Signup({ supabase }) {
           </div>
         </form>
       </div>
-
-
     </div>
 
   )
