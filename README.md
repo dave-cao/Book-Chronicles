@@ -1,6 +1,5 @@
 ---
 created: 2023-12-20
-updated: 2023-12-20
 author: David Cao
 ---
 <h1 align='center'>📚 Book Chronicles</h1>
