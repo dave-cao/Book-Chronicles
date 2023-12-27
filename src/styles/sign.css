@@ -1,0 +1,42 @@
+@import "./global.css";
+
+.outer-sign-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
+.sign-container {
+  text-align: left;
+  max-width: 500px;
+  padding: 40px 20px 40px 20px;
+  border: var(--borderColor) solid 1px;
+  margin: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+
+.sign-title {
+  color: black;
+}
+
+.sign-title,
+.sign-button,
+.sign-link {
+  margin-left: 20px !important;
+  margin-right: 20px;
+}
+
+.sign-button {
+  border-radius: 5px;
+}
+
+
+.sign-input {
+  margin: 5px !important;
+  margin-left: 20px !important;
+  margin-right: 20px;
+}

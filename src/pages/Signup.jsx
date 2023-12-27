@@ -2,6 +2,7 @@ import { useState } from "react"
 import Auth from "../functions/auth"
 import handleChange from "../functions/handleInputChange";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/sign.css"
 
 
 function Signup({ supabase }) {
@@ -33,32 +34,33 @@ function Signup({ supabase }) {
 
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="email"></label>
-        <input onChange={(e) => handleChange(e, setUserInput)} required placeholder="Email" id="email" name="email" type="email"></input>
+    <div className="outer-sign-container">
+      <div className="sign-container">
+        <h1 className="sign-title">Sign Up</h1>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <label htmlFor="email"></label>
+          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} required placeholder="Email" id="email" name="email" type="email"></input>
+          <div></div>
 
-        <div></div>
+          <label htmlFor="password"></label>
+          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} required placeholder="Password" id="password" name="password" type="password"></input>
 
-        <label htmlFor="password"></label>
-        <input onChange={(e) => handleChange(e, setUserInput)} required placeholder="Password" id="password" name="password" type="password"></input>
+          <div></div>
 
-        <div></div>
+          <label htmlFor="name"></label>
+          <input className="search-input sign-input" onChange={(e) => handleChange(e, setUserInput)} required placeholder="Display Name" id="name" name="name" type="text"></input>
 
-        <label htmlFor="name"></label>
-        <input onChange={(e) => handleChange(e, setUserInput)} required placeholder="Display Name" id="name" name="name" type="text"></input>
+          <div></div>
 
-        <div></div>
-
-        <button onClick={handleSignup} type="submit" className="red-button">Signup</button>
-        <div>
-          <Link to="/Book-Chronicles/signin">Have an account? Sign in!</Link>
-        </div>
-      </form>
+          <button onClick={handleSignup} type="submit" className="red-button sign-button">Signup</button>
+          <div className="sign-link">
+            <Link to="/Book-Chronicles/signin">Have an account? Sign in!</Link>
+          </div>
+        </form>
+      </div>
 
 
-    </>
+    </div>
 
   )
 }

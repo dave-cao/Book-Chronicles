@@ -45,14 +45,6 @@
 
 
 
-.search-input {
-  background-color: var(--backgroundAccent);
-  padding: 8px;
-  border: 1px solid #87ceeb; /* Light blue border */
-  height: 42px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
 
 .sort-posts-container {
   margin-right: 20px;
@@ -64,14 +56,18 @@
   background-color: var(--textAccent);
   padding: 8px 12px;
   margin: 5px;
-  border: 1px solid var(--borderColor); /* Light blue border */
+  border: 1px solid var(--borderColor);
+  /* Light blue border */
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effect */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth transition effect */
 }
 
 .sort-button:hover {
-  background-color: #ff4500; /* Change to your desired hover color */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow on hover */
+  background-color: #ff4500;
+  /* Change to your desired hover color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Add a subtle shadow on hover */
 }
 
 /*PostPreviews*/
@@ -82,7 +78,7 @@
   justify-content: center;
   margin-right: 20px;
   margin-left: 20px;
-  
+
 }
 
 .post-preview {
@@ -102,15 +98,15 @@
 }
 
 .post-preview:hover {
-    text-decoration: inherit;
-    color: inherit;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: inherit;
+  color: inherit;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .post-preview-top {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
 
@@ -133,35 +129,37 @@
   margin-bottom: 10px;
 }
 
-.post-preview .media, .post-preview .image {
+.post-preview .media,
+.post-preview .image {
   display: none;
 }
 
 
 .post-preview-bot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-.vote-image {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  }
+.vote-image {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+}
 
 .vote-image img {
-    width: 20px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-  }
+  width: 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
 
 .post-category {
-    background-color: #ffd3db;
-    border-radius: 20px;
-    padding: 7px;
-    font-size: 0.70rem;
-  }
+  background-color: #ffd3db;
+  border-radius: 20px;
+  padding: 7px;
+  font-size: 0.70rem;
+}
 
 
 
@@ -180,5 +178,3 @@
     width: 90%;
   }
 }
-
-
