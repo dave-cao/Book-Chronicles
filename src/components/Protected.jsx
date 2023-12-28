@@ -5,7 +5,7 @@ const Protected = ({ session, children }) => {
 
   if (!session) {
     toast.error("You need to sign-in to get access to this!")
-    return <Navigate to="/Book-Chronicles/signin?denied=true" replace />;
+    return <Navigate to="/Book-Chronicles/signin" replace />;
   }
   return children;
 };

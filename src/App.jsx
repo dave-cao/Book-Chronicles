@@ -13,6 +13,7 @@ import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import UserPosts from './pages/UserPosts'
 import UserPost from './pages/UserPost'
+import UserProfile from './pages/UserProfile'
 
 
 
@@ -67,8 +68,15 @@ function App() {
               <Edit supabase={supabase} session={session} />
             </Protected>} />
 
+          {/* User Profile Page is protected (brainstorm security risks) */}
+          {/* We can grab from the session only, makes it more secure*/}
+          <Route path="/Book-Chronicles/profile" element={
+            <Protected session={session}>
+              <UserProfile supabase={supabase} session={session} />
+            </Protected>} />
+
           {/* User posts path */}
-          <Route path="/Book-Chronicles/users/:id" element={<UserPost supabase={supabase} session={session} />} />
+          <Route path="/Book-Chronicles/users/:username" element={<UserPost supabase={supabase} session={session} />} />
 
           <Route path="/Book-Chronicles/getBookInfo" element={<GetBookInfo />} />
           <Route path="Book-Chronicles/userposts" element={<UserPosts supabase={supabase} />} />

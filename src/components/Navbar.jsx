@@ -2,16 +2,15 @@ import "../styles/navbar.css"
 import { Link } from "react-router-dom"
 import BackToTopButton from "./BackToTopButton";
 import Auth from "../functions/auth"
-import { useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import "../styles/profile.css"
 
 function Navbar({ supabase, session }) {
   const auth = Auth(supabase)
   const handleLogout = () => {
     auth.logout()
-    toast("Logged out.", { icon: "👋" })
+    toast("Goodbye!", { icon: "👋" })
   }
-
 
 
   return (
@@ -31,16 +30,30 @@ function Navbar({ supabase, session }) {
         <div className="navbar-nav">
           <Link to="/Book-Chronicles" className="nav-item nav-link" href="#">Home <span className="sr-only">(current)</span></Link>
           <Link to="/Book-Chronicles/create" className="nav-item nav-link" href="#">Create</Link>
-          <Link to="/Book-Chronicles/getBookInfo" className="nav-item nav-link" href="#">Get Book</Link>
-          <Link to="/Book-Chronicles/userposts" className="nav-item nav-link" href="#">User Posts</Link>
           {session ? "" : <Link to="/Book-Chronicles/signin" className="nav-item nav-link" href="#">Signin</Link>}
-          {session ? <a onClick={handleLogout} className="nav-item nav-link" href="#">Logout</a> : ""}
+
+          {/* For the profile pic drop down */}
+          {session ?
+            <div className="nav-item nav-link dropdown">
+              <a className="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" className="rounded-circle"></img>
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <Link to={`/Book-Chronicles/users/${session.user.user_metadata.name}`} className="dropdown-item">Dashboard</Link>
+                <Link to="/Book-Chronicles/userposts" className="dropdown-item" href="#">Other Users</Link>
+                <Link to={"/Book-Chronicles/profile"} className="dropdown-item">Edit Profile</Link>
+                <Link onClick={handleLogout} to={"/Book-Chronicles"} className="dropdown-item">Log Out</Link>
+              </div>
+
+            </div>
+            : ""
+          }
         </div>
       </div>
 
       {/* IT WILL BE HERE FOR NOW */}
       <BackToTopButton />
-    </nav>
+    </nav >
   );
 }
 

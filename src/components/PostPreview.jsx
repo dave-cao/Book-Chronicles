@@ -11,7 +11,8 @@ function PostPreview({ id, title, created_at, vote, category, username, img_url,
     tagColor = "back-pastel-red pastel-red"
   }
 
-  const truncateContent = content.length >= 300 ? content.substring(0, 300) + "..." : content
+  // takes out excessive white space via regex
+  const truncateContent = content.length >= 300 ? content.replace(/<p>&nbsp;<\/p>/g, '').substring(0, 300) + "..." : content.replace(/<p>&nbsp;<\/p>/g, '')
   const htmlcontent = postHTMLContent(truncateContent)
 
   return (

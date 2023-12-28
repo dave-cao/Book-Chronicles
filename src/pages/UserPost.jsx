@@ -10,16 +10,16 @@ function UserPost({ supabase, session }) {
   const user_id = user.id
 
   // get url param
-  const { id } = useParams();
+  const { username } = useParams();
 
   const getPosts = async () => {
-    const { data, error } = await supabase.from("posts").select().order("created_at", { ascending: false }).eq('user_id', id)
+    const { data, error } = await supabase.from("posts").select().order("created_at", { ascending: false }).eq('username', username)
     setPosts(data)
   }
 
   useEffect(() => {
     getPosts()
-  }, [])
+  }, [username])
 
   // display post previews
   const displayPostPreviews = () => {

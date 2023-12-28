@@ -1,8 +1,15 @@
 # Things to Do
 
-5. write a script that will prevent the 7day inactivity log from supabase
-6. Make it so users can't make the same display name
+7. Begin making a user profile page
+8. Make a dynamic changing year footer 
+9. In the dashboard (For now, the dashboard is just users posts)
+- My posts
+- My liked posts
+- Stats
+    - number of posts
+10. Make a profile page
 
 `npm run deploy` ~ to push to deployment
+
 
 

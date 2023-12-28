@@ -56,7 +56,7 @@ function UserPosts({ supabase }) {
 
   const displayUsers = () => {
     return users.map((user) => {
-      return <li key={user.id}><Link to={`/Book-Chronicles/users/${user.user_id}`}>{user.name} ~ {user.posts.length}</Link></li>
+      return <li key={user.id}><Link to={`/Book-Chronicles/users/${user.name}`}>{user.name} ~ {user.posts.length}</Link></li>
     })
   }
 

@@ -9,7 +9,15 @@ nav li {
   margin: 10px;
   text-decoration: none;
 }
-Home
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 /* Disable link underlining */
 .link {
   color: inherit;
@@ -26,8 +34,20 @@ nav h3 {
 }
 
 @media only screen and (max-width: 400px) {
-  nav h3  {
+  nav h3 {
     display: none;
   }
 }
 
+/* profile pic in nav bar */
+.profile-image {
+  max-width: 60px;
+  max-height: 60px;
+  width: auto;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.dropdown-menu {
+  left: -110px;
+}
