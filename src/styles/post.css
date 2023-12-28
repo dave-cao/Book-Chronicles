@@ -143,6 +143,7 @@ div.ck {
   margin-bottom: 30px;
   border-radius: 10px;
   height: auto;
+  max-height: 600px;
 }
 
 /* EDIT DELETE BUTTONS */
@@ -284,6 +285,5 @@ iframe {
     margin-top: 10px;
     margin-bottom: 30px;
     border-radius: 10px;
-    height: auto;
   }
 }

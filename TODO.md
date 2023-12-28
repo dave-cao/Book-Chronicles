@@ -8,8 +8,13 @@
 - Stats
     - number of posts
 10. Make a profile page
+- theres a library called react-image-crop ~ could be interesting for 
+    - profile pic cropping (start with preselected crop)
+    - we need a 40x40 image!
+    - locked?: boolean
 
-`npm run deploy` ~ to push to deployment
+11. Make better tags
+
 
 
 

@@ -60,7 +60,6 @@ function UserPosts({ supabase }) {
     })
   }
 
-
   return (
     <div>
       {displayUsers()}

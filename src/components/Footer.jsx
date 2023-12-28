@@ -5,6 +5,9 @@ import website from "../assets/icons/website.png"
 import github from "../assets/icons/github.png"
 
 function Footer() {
+
+  const year = new Date().getFullYear()
+
   return (
     <div className='footer-container'>
       <div className="container">
@@ -34,7 +37,7 @@ function Footer() {
               </button>
             </a>
           </div>
-          <div className='footer-name'>Made by David Cao © 2024</div>
+          <div className='footer-name'>Made by David Cao © {year}</div>
         </footer>
       </div >
 

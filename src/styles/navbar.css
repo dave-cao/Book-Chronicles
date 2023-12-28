@@ -5,11 +5,6 @@ nav {
   background-color: var(--backgroundAccent);
 }
 
-nav li {
-  margin: 10px;
-  text-decoration: none;
-}
-
 .nav-item {
   display: flex;
   align-items: center;
@@ -30,13 +25,64 @@ nav li {
 nav h3 {
   margin: 0;
   font-size: 20px;
+  text-align: left;
+}
+
+.nav-link-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-link {
+  font-weight: bold;
+}
+
+.plus-link {
+  transition: transform 0.3s ease-in-out;
+  background-color: var(--backgroundAccent) !important;
 
 }
 
-@media only screen and (max-width: 400px) {
+.plus-link:hover {
+  background-color: var(--backgroundAccent) !important;
+}
+
+.plus-link img {
+  width: 20px;
+}
+
+
+.plus-link:hover img {
+  animation: jump 1s ease infinite;
+}
+
+@keyframes jump {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+
+@media only screen and (max-width: 550px) {
   nav h3 {
     display: none;
   }
+
+
 }
 
 /* profile pic in nav bar */
@@ -49,5 +95,6 @@ nav h3 {
 }
 
 .dropdown-menu {
-  left: -110px;
+  position: absolute !important;
+  left: -110px !important;
 }
