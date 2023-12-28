@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import PostPreview from '../components/PostPreview';
+import "../styles/home.css"
 
 function UserPost({ supabase, session }) {
   const [posts, setPosts] = useState([]);
@@ -35,7 +36,7 @@ function UserPost({ supabase, session }) {
 
 
   return (
-    <div>{displayPostPreviews()}</div>
+    <div className='post-preview-container'>{displayPostPreviews()}</div>
   )
 }
 

@@ -18,6 +18,18 @@ function UserPosts({ supabase }) {
       // set the posts within the data object
       data[i].posts = posts
     }
+
+    // sort the user posts that populate by most posts
+    data.sort((userA, userB) => {
+      if (userA.posts.length < userB.posts.length) {
+        return 1
+      }
+      if (userA.posts.length > userB.posts.length) {
+        return -1
+      }
+      return 0
+    })
+
     setUsers(data)
   }
 

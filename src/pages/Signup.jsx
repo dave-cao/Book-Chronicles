@@ -13,22 +13,34 @@ function Signup({ supabase }) {
   const [userInput, setUserInput] = useState({});
   const navigate = useNavigate();
 
+  const usernameTaken = async (username) => {
+    const { data, error } = await supabase.from("users").select().eq("name", username)
+    return !(data.length === 0)
+  }
+
   // signs up the user
   // try again later
   const handleSignup = async () => {
     // signs up user to supabase auth system
     if (userInput.name && userInput.password && userInput.email) {
-      const [data, error] = await auth.signupUser(userInput.email, userInput.password, userInput.name)
-      const { user, session } = data;
-      if (user) {
-        const { data, error } = await supabase.from('users').insert({ user_id: user.id, name: user.user_metadata.name })
-        toast.success("Signed up successfully!")
 
-        // navigate back to home page
-        navigate("/Book-Chronicles")
-
+      // check to see if the username is taken
+      const checkUsername = await usernameTaken(userInput.name)
+      if (checkUsername) {
+        toast.error("Display name taken.")
       } else {
-        toast.error(error.message)
+        const [data, error] = await auth.signupUser(userInput.email, userInput.password, userInput.name)
+        const { user, session } = data;
+        if (user) {
+          const { data, error } = await supabase.from('users').insert({ user_id: user.id, name: user.user_metadata.name })
+          toast.success("Signed up successfully!")
+
+          // navigate back to home page
+          navigate("/Book-Chronicles")
+
+        } else {
+          toast.error(error.message)
+        }
       }
     } else {
       toast.error("You need to fill in all the fields!")

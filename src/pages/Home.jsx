@@ -127,7 +127,6 @@ function Home({ supabase, session }) {
         {displayPostPreviews()}
       </div>
 
-      <div className="push"></div>
     </>
   )
 }
