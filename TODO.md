@@ -1,6 +1,5 @@
 # Things to Do
 
-7. Begin making a user profile page
 8. Make a dynamic changing year footer 
 9. In the dashboard (For now, the dashboard is just users posts)
 - My posts
@@ -13,7 +12,15 @@
     - we need a 40x40 image!
     - locked?: boolean
 
-12. On post preview, there will be a *t* where users can hover over, and that will give a popup of the tags of that book
 
 13. Make even better tags:
     - have a hover effect for information on multiple tags
+
+14. Edit profile:
+- try looking into shadcn ui for this
+
+Some cool libraries that you can use:
+- Next UI: prebuilt components
+- Radix UI: highly customizable with many components
+- Shadcn UI: built on top of Radix UI
+- Material UI: material design proposed by google

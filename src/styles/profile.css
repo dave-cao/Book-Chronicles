@@ -1,1 +1,13 @@
 @import "./global.css";
+
+.profile-tabs-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  min-height: calc(100vh - 300px)
+}
+
+.tabs-label {
+  gap: 0px;
+}

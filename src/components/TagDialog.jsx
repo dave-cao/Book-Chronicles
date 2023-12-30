@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
-import '../styles/radix.css'
+import '../styles/tags-dialog.css'
 import pressEnter from '../functions/pressEnter';
 import getTagColor from '../functions/getTagColor';
 
@@ -35,13 +35,13 @@ const TagDialog = ({ handleChange, post, addTag, deleteTag }) => {
           <Dialog.Description className="DialogDescription">
             Here is where you set your tags.
           </Dialog.Description>
-          <fieldset className="Fieldset">
+          <fieldset className="Fieldset tag-fieldset">
             <label className="Label" htmlFor="tag">
               Enter Tags
             </label>
             <input onKeyUp={(e) => { pressEnter(e, () => { addTag(tag); setTag("") }) }} value={tag} onChange={handleTagInput} className="Input" id="name" />
 
-            <button onClick={() => { addTag(tag) }} className="Button purple add-tag-button">+</button>
+            <button onClick={() => { addTag(tag); setTag("") }} className="Button purple add-tag-button">+</button>
           </fieldset>
 
 

@@ -33,7 +33,16 @@ const Auth = (supabase) => {
       supabase.auth.onAuthStateChange((event, session) => {
         console.log(event, session)
       })
-    }
+    },
+
+    // changes the email of the current user
+    async changeEmail(newEmail) {
+      const { data, error } = await supabase.auth.updateUser({ email: newEmail })
+      return [data, error]
+
+
+
+    },
   }
 }
 
