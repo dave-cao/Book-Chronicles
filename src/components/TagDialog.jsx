@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import '../styles/radix.css'
 import pressEnter from '../functions/pressEnter';
+import getTagColor from '../functions/getTagColor';
 
 const TagDialog = ({ handleChange, post, addTag, deleteTag }) => {
   const [tag, setTag] = useState("")
@@ -10,9 +11,12 @@ const TagDialog = ({ handleChange, post, addTag, deleteTag }) => {
     setTag(e.target.value)
   }
 
-
   const displayTags = () => {
-    return post.tags.map((tag) => <span className='post-category post-tags-form-display' key={tag}>#{tag} <span className='delete-tag' onClick={() => { deleteTag(tag) }}>x</span></span>)
+    return post.tags.map((tag) => {
+      // tagColor
+      let tagColor = getTagColor(tag);
+      return <span className={`post-category post-tags-form-display ${tagColor}`} key={tag} >#{tag} < span className='delete-tag' onClick={() => { deleteTag(tag) }}> x</span ></span >
+    })
   }
 
 

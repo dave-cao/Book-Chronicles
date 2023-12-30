@@ -2,13 +2,15 @@ import React from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { PlusIcon } from '@radix-ui/react-icons';
 import '../styles/tags-tooltip.css';
+import getTagColor from '../functions/getTagColor';
 
 const TagsTooltip = ({ tags, subtracted }) => {
 
   const displayTags = () => {
     tags = tags.slice(subtracted);
     return tags.map((tag) => {
-      return <p key={tag} className={`post-category`}>#{tag}</p>
+      let tagColor = getTagColor(tag);
+      return <p key={tag} className={`post-category ${tagColor}`}>#{tag}</p>
     })
   }
 

@@ -9,6 +9,7 @@ import like from "../assets/like.png"
 import postHTMLContent from "../components/StringToJSX";
 import toast from "react-hot-toast";
 import TagsTooltip from "../components/ToolTip";
+import getTagColor from "../functions/getTagColor";
 
 
 function Post({ supabase, session }) {
@@ -141,17 +142,13 @@ function Post({ supabase, session }) {
     return <Comment key={comment.id} date={comment.created_at} comment={comment.comment} id={comment.id} supabase={supabase} reloadComments={getComments} username={comment.username} user_id={comment.user_id} session_user_id={user_id} />
   })
 
-  // tagColor
-  let tagColor = "back-pastel-green pastel-green"
-  if (post.category == "review") {
-    tagColor = "back-pastel-purple pastel-purple";
-  } else if (post.category == "recommend") {
-    tagColor = "back-pastel-red pastel-red"
-  }
+
 
   const displayTags = () => {
     let newTags = post.tags.slice(0, 2)
     return newTags.map((tag) => {
+      // tagColor
+      let tagColor = getTagColor(tag);
       return <p key={tag + id} className={`post-category ${tagColor}`}>#{tag}</p>
     })
   }

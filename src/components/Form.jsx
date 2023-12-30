@@ -1,13 +1,15 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from "../../ckeditor5/build/ckeditor"
 import TagDialog from './TagDialog';
+import getTagColor from '../functions/getTagColor';
 
 
 
 function Form({ handleChange, post, addTag, deleteTag }) {
 
   const displayTags = post.tags.map((tag) => {
-    return <span key={tag + post} className={`post-category post-tags-form-display`}>#{tag}</span>
+    let tagColor = getTagColor(tag)
+    return <span key={tag + post} className={`post-category post-tags-form-display ${tagColor}`}>#{tag}</span>
   })
 
   return (

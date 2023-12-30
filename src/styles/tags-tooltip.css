@@ -1,5 +1,6 @@
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/violet.css';
+@import './global.css';
 
 /* reset */
 .IconButton {
@@ -7,12 +8,18 @@
 }
 
 .TooltipContent {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 200px;
+  gap: 5px;
   border-radius: 4px;
+  margin: 10px;
   padding: 10px 15px;
   font-size: 15px;
   line-height: 1;
   color: var(--violet-11);
-  background-color: white;
+  border: 1px solid #87ceeb;
+  background-color: var(--backgroundAccent);
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   user-select: none;
   animation-duration: 400ms;
@@ -37,7 +44,7 @@
 }
 
 .TooltipArrow {
-  fill: white;
+  fill: #87ceeb;
 }
 
 .tags-plus-button {

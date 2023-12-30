@@ -3,20 +3,14 @@ import timeAgo from "../functions/timeAgo"
 import like from "../assets/like.png"
 import postHTMLContent from "./StringToJSX"
 import TagsTooltip from "../components/ToolTip";
+import getTagColor from "../functions/getTagColor";
 
 function PostPreview({ id, title, created_at, vote, tags, username, img_url, content, currentUserLiked }) {
-  let tagColor = "back-pastel-green pastel-green"
-
-  // FOR NOW this is all the same colour
-  if (tags == "review") {
-    tagColor = "back-pastel-purple pastel-purple";
-  } else if (tags == "recommend") {
-    tagColor = "back-pastel-red pastel-red"
-  }
 
   const displayTags = () => {
     let newTags = tags.slice(0, 1)
     return newTags.map((tag) => {
+      let tagColor = getTagColor(tag)
       return <p key={tag + id} className={`post-category ${tagColor}`}>#{tag}</p>
     })
   }
