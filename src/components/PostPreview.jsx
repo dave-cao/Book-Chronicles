@@ -2,13 +2,23 @@ import { Link } from "react-router-dom"
 import timeAgo from "../functions/timeAgo"
 import like from "../assets/like.png"
 import postHTMLContent from "./StringToJSX"
+import TagsTooltip from "../components/ToolTip";
 
-function PostPreview({ id, title, created_at, vote, category, username, img_url, content, currentUserLiked }) {
+function PostPreview({ id, title, created_at, vote, tags, username, img_url, content, currentUserLiked }) {
   let tagColor = "back-pastel-green pastel-green"
-  if (category == "review") {
+
+  // FOR NOW this is all the same colour
+  if (tags == "review") {
     tagColor = "back-pastel-purple pastel-purple";
-  } else if (category == "recommend") {
+  } else if (tags == "recommend") {
     tagColor = "back-pastel-red pastel-red"
+  }
+
+  const displayTags = () => {
+    let newTags = tags.slice(0, 1)
+    return newTags.map((tag) => {
+      return <p key={tag + id} className={`post-category ${tagColor}`}>#{tag}</p>
+    })
   }
 
   // takes out excessive white space via regex
@@ -19,7 +29,7 @@ function PostPreview({ id, title, created_at, vote, category, username, img_url,
     <Link className="post-preview" to={`/Book-Chronicles/post/${id}`}>
       <div className="post-preview-top">
         <p className="time-ago">Posted {created_at ? timeAgo(created_at) : " "}</p>
-        <p className={`post-category ${tagColor}`}>#{category}</p>
+        {tags.length > 1 ? <div className="preview-tags-container">{displayTags()}<small><TagsTooltip tags={tags} subtracted={1} /></small></div> : <div className="preview-tags-container">{displayTags()}</div>}
       </div>
       <div className="post-preview-middle">
         <h2 className="pastel-black">{title}</h2>

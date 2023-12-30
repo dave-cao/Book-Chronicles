@@ -7,9 +7,10 @@ import Form from "../components/Form";
 import { toast } from "react-hot-toast";
 
 function Create({ supabase, session }) {
-  const [post, setPost] = useState({ title: "", content: "", img: "" })
+  const [post, setPost] = useState({ title: "", content: "", img: "", tags: [] })
   const navigate = useNavigate() // for navigation
   const { state } = useLocation();
+  console.log(post)
 
   // user variables
   const user = session ? session.user : { user_metadata: "" }
@@ -26,13 +27,16 @@ function Create({ supabase, session }) {
   }, [])
 
   // update book based on user input
-  const handleChange = (event) => {
+  const handleChange = (event, isTags = []) => {
     let name;
     let value;
 
     if (!event.target) {
       name = "content";
       value = event.getData();
+    } else if (isTags.length !== 0) {
+      name = event.target.name
+      value = isTags
     } else {
       name = event.target.name
       value = event.target.value
@@ -50,10 +54,38 @@ function Create({ supabase, session }) {
   const createPost = async () => {
 
     const { data, error } = await supabase.from('posts').insert({
-      title: post.title, content: post.content, img: post.img, category: post.category, username: username, user_id: user_id
+      title: post.title, content: post.content, img: post.img, tags: post.tags, username: username, user_id: user_id
     })
     toast.success("Post inserted into database!")
     navigate("/Book-Chronicles")
+  }
+
+  // TODO: EDIT AND CREATE HAVE A LOT OF SIMIILAR FUNCTIONS
+  // ADD OR REMOVE TAGS FROM POST
+  // Adds tag into post 
+  const addTag = (tag) => {
+    tag = tag.trim()
+    if (!post.tags.includes(tag) && tag) {
+      setPost((prev) => {
+        return {
+          ...prev,
+          tags: [...prev.tags, tag]
+        }
+      })
+    }
+  }
+
+  // removes tag from post
+  const deleteTag = (tag) => {
+    tag = tag.trim()
+    const index = post.tags.indexOf(tag)
+    setPost((prev) => {
+      const newTags = [...prev.tags.slice(0, index), ...prev.tags.slice(index + 1)]
+      return {
+        ...prev,
+        tags: [...newTags]
+      }
+    })
   }
 
 
@@ -61,9 +93,10 @@ function Create({ supabase, session }) {
     <>
       <div className="create-container">
         <h1 className="create-post-title pastel-black">Create a <span className="pastel-orange">Post</span></h1>
-        <Form handleChange={handleChange} post={post} />
+        <Form handleChange={handleChange} post={post} addTag={addTag} deleteTag={deleteTag} />
+
         <button className="btn red-button darkAccent create-button" onClick={createPost} post={post}>Create Post</button>
-        <Link to="/Book-Chronicles/getBookInfo"><button className="btn create-button orange-button">Get Book Info</button></Link>
+        <div className="get-book-info-button"><Link to="/Book-Chronicles/getBookInfo">Need book information? Click here!</Link></div>
       </div>
     </>
   );

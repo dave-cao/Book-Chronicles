@@ -13,8 +13,7 @@
     - we need a 40x40 image!
     - locked?: boolean
 
-11. Make better tags
+12. On post preview, there will be a *t* where users can hover over, and that will give a popup of the tags of that book
 
-
-
-
+13. Make even better tags:
+    - have a hover effect for information on multiple tags

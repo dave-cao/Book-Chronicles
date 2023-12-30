@@ -29,7 +29,7 @@ function UserPost({ supabase, session }) {
       return posts.map((post) => {
         // check if user liked post
         const currentUserLiked = post.user_likes[user_id]
-        return <PostPreview key={post.id} id={post.id} title={post.title} created_at={post.created_at} vote={post.vote} category={post.category} username={post.username} img_url={post.img} content={post.content} currentUserLiked={currentUserLiked} />
+        return <PostPreview key={post.id} id={post.id} title={post.title} created_at={post.created_at} vote={post.vote} tags={post.tags} username={post.username} img_url={post.img} content={post.content} currentUserLiked={currentUserLiked} />
       })
     }
   }

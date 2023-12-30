@@ -1,13 +1,14 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from "../../ckeditor5/build/ckeditor"
+import TagDialog from './TagDialog';
 
 
 
-function Form({ handleChange, post }) {
+function Form({ handleChange, post, addTag, deleteTag }) {
 
-  const fullscreen = (editor) => {
-    console.log("hello")
-  }
+  const displayTags = post.tags.map((tag) => {
+    return <span key={tag + post} className={`post-category post-tags-form-display`}>#{tag}</span>
+  })
 
   return (
     <form>
@@ -50,23 +51,14 @@ function Form({ handleChange, post }) {
             }}
           />
         </div>
-
-
-
-
-
-
       </div>
-      <div className="radio-container">
-        <input onChange={handleChange} type="radio" id="general" name="category" value="general" />
-        <label className="radio" htmlFor="general">General (default)</label><br />
 
-        <input onChange={handleChange} type="radio" id="review" name="category" value="review" />
-        <label className="radio" onChange={handleChange} htmlFor="review">Review</label><br />
 
-        <input onChange={handleChange} type="radio" id="recommend" name="category" value="recommend" />
-        <label className="radio" htmlFor="recommend">Recommend</label><br />
-
+      <div className='outer-tag-container'>
+        <div className="tag-container">
+          <div className='inner-tags-container'>{displayTags}</div>
+          <TagDialog handleChange={handleChange} post={post} addTag={addTag} deleteTag={deleteTag} />
+        </div>
       </div>
     </form >
   )

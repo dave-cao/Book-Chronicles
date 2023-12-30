@@ -8,12 +8,13 @@ import edit from "../assets/edit.png"
 import like from "../assets/like.png"
 import postHTMLContent from "../components/StringToJSX";
 import toast from "react-hot-toast";
+import TagsTooltip from "../components/ToolTip";
 
 
 function Post({ supabase, session }) {
   // hooks
   // states
-  const [post, setPost] = useState({ user_likes: "" })
+  const [post, setPost] = useState({ user_likes: "", tags: [] })
   const [clicked, setClicked] = useState(false)
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState("")
@@ -148,6 +149,13 @@ function Post({ supabase, session }) {
     tagColor = "back-pastel-red pastel-red"
   }
 
+  const displayTags = () => {
+    let newTags = post.tags.slice(0, 2)
+    return newTags.map((tag) => {
+      return <p key={tag + id} className={`post-category ${tagColor}`}>#{tag}</p>
+    })
+  }
+
 
 
   // returns the post content
@@ -157,7 +165,8 @@ function Post({ supabase, session }) {
         {/* post details */}
         <div className="post-tags">
           <p>Posted {post.created_at ? timeAgo(post.created_at) : " "}</p>
-          <p className={`post-category ${tagColor}`}>#{post.category}</p>
+          {post.tags.length > 2 ? <div className="preview-tags-container">{displayTags()}<small className="extra-tags-preview"><TagsTooltip tags={post.tags} subtracted={2} /></small></div> : <div className="preview-tags-container">{displayTags()}</div>}
+
         </div>
         <h2 className="pastel-black">{post.title}</h2>
         <img className="post-image" src={post.img}></img>
@@ -193,7 +202,7 @@ function Post({ supabase, session }) {
         </div>
       </div>
 
-    </div>
+    </div >
   )
 }
 

@@ -49,7 +49,11 @@
 }
 
 .create-button {
-  margin-bottom: 20px !important;
+  margin-bottom: 15px !important;
+}
+
+.get-book-info-button {
+  margin-bottom: 10px !important;
 }
 
 
@@ -88,17 +92,54 @@ div.ck {
   margin: 10px;
 }
 
-
-.radio-container {
-  text-align: left;
-  margin: 10px;
-  margin-left: 38px;
+.outer-tag-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.radio {
+/* TAGS CSS  */
+.tag-container {
   text-align: left;
-  margin-left: 5px;
+  width: 90%;
+  margin-left: 0px !important;
+  margin-bottom: 20px !important;
 }
+
+.inner-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 700px;
+}
+
+.add-tag-button {
+  background-color: #9f8df1;
+  color: black;
+}
+
+.add-tag-button:hover {
+  background-color: #6550b9;
+}
+
+.set-tag-button {
+  position: relative;
+  padding: 0px 10px 0px 10px !important;
+  color: #493733 !important;
+  margin-left: 0px !important;
+  margin-top: 10px !important;
+}
+
+.save-button {
+  color: #6550b9;
+  border: 2px solid #9f8df1;
+}
+
+.save-button:hover {
+  background-color: #9f8df1;
+}
+
+/* END TAGS CSS */
+
 
 /* POST PAGE */
 
@@ -128,6 +169,22 @@ div.ck {
   padding: 7px;
   font-size: 0.70rem;
 }
+
+.post-tags-form-display {
+  margin: 5px;
+}
+
+.pop-up-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.delete-tag {
+  color: #333333;
+  cursor: pointer;
+  margin-left: 2px;
+}
+
 
 .post h2 {
   font-weight: bold;

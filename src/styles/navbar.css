@@ -41,6 +41,7 @@ nav h3 {
 .plus-link {
   transition: transform 0.3s ease-in-out;
   background-color: var(--backgroundAccent) !important;
+  padding: 10px;
 
 }
 

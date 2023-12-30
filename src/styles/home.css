@@ -118,12 +118,9 @@
   margin-top: 15px;
 }
 
-
-
 .post-preview h2 {
   text-align: left;
   margin-bottom: 20px;
-
 }
 
 .post-preview-img-content {
@@ -168,6 +165,11 @@
   width: 20px;
   margin-right: 5px;
   margin-bottom: 5px;
+}
+
+.preview-tags-container {
+  display: flex;
+  gap: 5px;
 }
 
 .post-category {
