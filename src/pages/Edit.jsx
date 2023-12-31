@@ -48,6 +48,7 @@ function Edit({ supabase }) {
   }
 
   const updatePost = async () => {
+
     const { error } = await supabase.from("posts").update({ title: post.title, content: post.content, img: post.img, tags: post.tags }).eq("id", id)
     toast.success("successfully updated!")
     navigate(`/Book-Chronicles/post/${id}`) // navigate back to the home page when done

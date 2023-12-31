@@ -39,10 +39,24 @@ const Auth = (supabase) => {
     async changeEmail(newEmail) {
       const { data, error } = await supabase.auth.updateUser({ email: newEmail })
       return [data, error]
-
-
-
     },
+
+    // change the display name of the current user
+    async changeName(name) {
+      const { data, error } = await supabase.auth.updateUser({ data: { name: name } })
+      return [data, error]
+    },
+
+    async usernameTaken(username) {
+      const { data, error } = await supabase.from("users").select().eq("name", username)
+      return !(data.length === 0)
+    },
+
+    async changePassword(password) {
+      const { data, error } = await supabase.auth.updateUser({ password: password })
+      return [data, error]
+    },
+
   }
 }
 

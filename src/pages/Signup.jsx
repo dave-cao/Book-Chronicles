@@ -13,11 +13,6 @@ function Signup({ supabase }) {
   const [userInput, setUserInput] = useState({});
   const navigate = useNavigate();
 
-  const usernameTaken = async (username) => {
-    const { data, error } = await supabase.from("users").select().eq("name", username)
-    return !(data.length === 0)
-  }
-
   // signs up the user
   // try again later
   const handleSignup = async () => {
@@ -25,7 +20,7 @@ function Signup({ supabase }) {
     if (userInput.name && userInput.password && userInput.email) {
 
       // check to see if the username is taken
-      const checkUsername = await usernameTaken(userInput.name)
+      const checkUsername = await auth.usernameTaken(userInput.name)
       if (checkUsername) {
         toast.error("Display name taken.")
       } else {
