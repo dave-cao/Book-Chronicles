@@ -84,10 +84,12 @@ function Edit({ supabase }) {
 
   return (
     <div>
-      <div className="create-container">
-        <h1 className="create-post-title pastel-black">Update <span className="pastel-orange">Post</span></h1>
-        <Form handleChange={handleChange} post={post} addTag={addTag} deleteTag={deleteTag} />
-        <button className="btn orange-button create-button" onClick={updatePost}>Update Post</button>
+      <div className="outer-create-container">
+        <div className="create-container">
+          <h1 className="create-post-title pastel-black">Update <span className="pastel-orange">Post</span></h1>
+          <Form handleChange={handleChange} post={post} addTag={addTag} deleteTag={deleteTag} />
+          <button className="btn orange-button create-button" onClick={updatePost}>Update Post</button>
+        </div>
       </div>
     </div>
   )
