@@ -91,12 +91,15 @@ function Create({ supabase, session }) {
 
   return (
     <>
-      <div className="create-container">
-        <h1 className="create-post-title pastel-black">Create a <span className="pastel-orange">Post</span></h1>
-        <Form handleChange={handleChange} post={post} addTag={addTag} deleteTag={deleteTag} />
+      <div className="outer-create-container">
+        <div className="create-container">
+          <h1 className="create-post-title pastel-black">Create a <span className="pastel-orange">Post</span></h1>
+          <Form handleChange={handleChange} post={post} addTag={addTag} deleteTag={deleteTag} />
 
-        <button className="btn red-button darkAccent create-button" onClick={createPost} post={post}>Create Post</button>
-        <div className="get-book-info-button"><Link to="/Book-Chronicles/getBookInfo">Need book information? Click here!</Link></div>
+          <button className="btn red-button darkAccent create-button" onClick={createPost} post={post}>Create Post</button>
+          <div className="get-book-info-button"><Link to="/Book-Chronicles/getBookInfo">Need book information? Click here!</Link></div>
+        </div>
+
       </div>
     </>
   );

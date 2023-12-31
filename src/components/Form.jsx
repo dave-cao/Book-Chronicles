@@ -19,11 +19,10 @@ function Form({ handleChange, post, addTag, deleteTag }) {
         <input placeholder="Title" onChange={handleChange} value={post.title} type="text" id="title" name="title" />
       </div>
       <div className="input">
-        <div className="input">
-          <label htmlFor="img"></label>
-          <input placeholder="Cover image url (optional)" onChange={handleChange} value={post.img} type="text" id="img_url" name="img" />
-        </div>
-
+        <label htmlFor="img"></label>
+        <input placeholder="Cover image url (optional)" onChange={handleChange} value={post.img} type="text" id="img_url" name="img" />
+      </div>
+      <div className="input">
         <div className='ckeditor-container'>
           <CKEditor
             config={{
