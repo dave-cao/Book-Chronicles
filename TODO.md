@@ -14,7 +14,8 @@
 - [x] 14. Edit profile:
     - [x] try looking into shadcn ui for this
 
-- [ ] Make the dashboard with charts and stuff
+- [x] Make the dashboard with charts and stuff
+- [x] Make a pagination system
 
 Some cool libraries that you can use:
 - Next UI: prebuilt components
