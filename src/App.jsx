@@ -14,6 +14,7 @@ import Signin from './pages/Signin'
 import UserPosts from './pages/UserPosts'
 import UserPost from './pages/UserPost'
 import UserProfile from './pages/UserProfile'
+import Dashboard from './pages/Dashboard'
 
 
 
@@ -73,6 +74,13 @@ function App() {
           <Route path="/Book-Chronicles/profile" element={
             <Protected session={session}>
               <UserProfile supabase={supabase} session={session} />
+            </Protected>} />
+
+
+          {/* Dashboard is a protected route */}
+          <Route path="/Book-Chronicles/dashboard" element={
+            <Protected session={session}>
+              <Dashboard supabase={supabase} session={session} />
             </Protected>} />
 
           {/* User posts path */}

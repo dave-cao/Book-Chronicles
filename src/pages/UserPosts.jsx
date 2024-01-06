@@ -1,70 +1,61 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import "../styles/userpost-page.css";
 
 function UserPosts({ supabase }) {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
-  /*
-   * Gets each user in the database and their posts
-   * */
   const getUsers = async () => {
-    const { data, error } = await supabase.from("users").select().order("name")
-    // for every user they you got, get their posts
+    const { data, error } = await supabase.from("users").select().order("name");
     for (let i = 0; i < data.length; i++) {
-      const user = data[i]
-      const posts = await getPosts(user)
-
-      // set the posts within the data object
-      data[i].posts = posts
+      const user = data[i];
+      const posts = await getPosts(user);
+      data[i].posts = posts;
     }
 
-    // sort the user posts that populate by most posts
-    data.sort((userA, userB) => {
-      if (userA.posts.length < userB.posts.length) {
-        return 1
-      }
-      if (userA.posts.length > userB.posts.length) {
-        return -1
-      }
-      return 0
-    })
+    data.sort((userA, userB) => userB.posts.length - userA.posts.length);
 
-    setUsers(data)
-  }
+    setUsers(data);
+  };
 
-  /*
-   * Gets the posts of a user 
-   * */
   const getPosts = async (user) => {
-    const { data, error } = await supabase.from("posts").select().eq("user_id", user.user_id)
-    return data
-  }
+    const { data, error } = await supabase.from("posts").select().eq("user_id", user.user_id);
+    return data;
+  };
 
-  /*
-   * Get's user data when first load in page
-  */
   useEffect(() => {
     const gettingUsers = getUsers();
     toast.promise(gettingUsers, {
       loading: 'Grabbing all users...',
       success: "Click on a user to see their posts!",
       error: "Error while getting users..."
-
-    })
-  }, [])
+    });
+  }, []);
 
   const displayUsers = () => {
-    return users.map((user) => {
-      return <li key={user.id}><Link to={`/Book-Chronicles/users/${user.name}`}>{user.name} ~ {user.posts.length}</Link></li>
-    })
-  }
+    return users.filter((user) => user.posts.length).map((user) => (
+      <div key={user.id} className="col-lg-4 col-md-6 mb-3">
+        <div className="card user-card">
+          <div className="card-body">
+            <h5 className="card-title">
+              <Link to={`/Book-Chronicles/users/${user.name}`}>{user.name}</Link>
+            </h5>
+            <h6 className="card-subtitle mb-2 text-muted">{user.posts.length} Posts</h6>
+          </div>
+
+        </div>
+      </div >
+    ));
+  };
 
   return (
-    <div>
-      {displayUsers()}
+    <div className="outer-user-cards-container">
+      <div className="row user-cards-container">
+        {displayUsers()}
+      </div>
     </div>
-  )
+  );
 }
 
-export default UserPosts
+export default UserPosts;

@@ -1,0 +1,18 @@
+@import "./global.css";
+
+.outer-user-cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.user-cards-container {
+  width: 95%;
+}
+
+.user-card {
+  background-color: var(--backgroundAccent);
+  border-radius: 10px;
+  ;
+}

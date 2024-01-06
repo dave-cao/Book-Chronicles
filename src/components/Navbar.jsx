@@ -5,7 +5,8 @@ import Auth from "../functions/auth"
 import toast, { Toaster } from "react-hot-toast";
 import "../styles/profile.css"
 import plus from "../assets/icons/plus.png"
-import { Tooltip } from "react-tooltip";
+import { Avatar } from "@radix-ui/react-avatar";
+
 
 function Navbar({ supabase, session }) {
   const auth = Auth(supabase)
@@ -34,12 +35,12 @@ function Navbar({ supabase, session }) {
             {/* For the profile pic drop down */}
             {session ?
               <div className="nav-item nav-link dropdown">
-                <a className="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" className="rounded-circle"></img>
+                <a className="profile-pic-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {session.user.user_metadata.name[0]}
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <Link to="/Book-Chronicles/create" className="create-link dropdown-item">Create</Link>
-                  <Link to={`/Book-Chronicles/users/${session.user.user_metadata.name}`} className="dropdown-item">Dashboard</Link>
+                  <Link to={`/Book-Chronicles/dashboard`} className="dropdown-item">Dashboard</Link>
                   <Link to="/Book-Chronicles/userposts" className="dropdown-item" href="#">Other Users</Link>
                   <Link to={"/Book-Chronicles/profile"} className="dropdown-item">Edit Profile</Link>
                   <Link onClick={handleLogout} to={"/Book-Chronicles"} className="dropdown-item">Log Out</Link>

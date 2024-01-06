@@ -87,13 +87,21 @@ nav h3 {
 }
 
 /* profile pic in nav bar */
-.profile-image {
-  max-width: 60px;
-  max-height: 60px;
-  width: auto;
-  height: 50px;
-  border-radius: 100%;
+
+.profile-pic-link {
+  text-decoration: none !important;
+  color: black;
+  background-color: #9adde7;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
+
+.profile-pic-link:hover {
+  color: black;
+}
+
 
 .dropdown-menu {
   position: absolute !important;

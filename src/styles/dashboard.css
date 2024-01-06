@@ -1,0 +1,65 @@
+:root {
+  --borderColor: #000;
+  /* Set the border color as per your design */
+}
+
+.custom-tooltip {
+  background-color: var(--backgroundAccent);
+  border: var(--borderColor) solid 1px;
+  border-radius: 5px;
+  padding: 10px !important;
+}
+
+.outer-dashboard-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  /* Set the background color */
+  /* Adjust height as needed */
+}
+
+.dashboard-container {
+  border: 1px var(--borderColor) solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  margin-top: 5vh;
+  padding: 20px;
+  width: 90%;
+  background-color: #fff;
+  /* Set the background color */
+}
+
+.dashboard-title {
+  margin: 10px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.total-counters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.total-counters h3 {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: var(--backgroundAccent);
+  padding: 10px;
+  border-radius: 10px;
+  ;
+}
+
+.chart-title {
+  margin: 10px;
+  margin-top: 35px;
+  color: black;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+}
