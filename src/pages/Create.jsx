@@ -10,7 +10,6 @@ function Create({ supabase, session }) {
   const [post, setPost] = useState({ title: "", content: "", img: "", tags: [] })
   const navigate = useNavigate() // for navigation
   const { state } = useLocation();
-  console.log(post)
 
   // user variables
   const user = session ? session.user : { user_metadata: "" }
@@ -21,7 +20,8 @@ function Create({ supabase, session }) {
   // IF WE GRABBED A BOOK
   useEffect(() => {
     if (state) {
-      setPost({ title: `${state.title} ~ ${state.author}`, content: state.description, img: state.cover_key ? state.cover_url : "" })
+      console.log(state)
+      setPost({ title: `${state.title} ~ ${state.author}`, content: state.description, img: state.cover_key ? state.cover_url : "", tags: [] })
     }
 
   }, [])
