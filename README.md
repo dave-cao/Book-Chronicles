@@ -7,14 +7,13 @@ author: David Cao
 <br>
 
 <!-- Video walkthrough or image -->
-https://github.com/dave-cao/Book-Chronicles/assets/63488152/f7149e1e-0429-4911-a744-e0fbd2f86ecd
-
+https://github.com/dave-cao/Book-Chronicles/assets/63488152/a0d5df1e-ed73-440c-9d96-eac04b8220ae
 
 <br>
 
 <!-- List links to the project here (eg: live-link, youtube video) -->
 - **Visit the project at: https://dave-cao.github.io/Book-Chronicles/**
-- **Demonstration Video: coming soon...**
+- **Demonstration Video: https://youtu.be/vV7ZQ9NbKhE**
 
 
 <!-- ABOUT THE PROJECT -->
@@ -35,7 +34,7 @@ I built this as a final project for CodePath Intermediate Web Development course
 2. Sign up and make an account
 3. Create a post!
 
-_For a more comprehensive example of using this application, refer to this [video](coming soon...)_
+_For a more comprehensive example of using this application, refer to this [video](https://youtu.be/vV7ZQ9NbKhE)_
 
 ## Notes
 
