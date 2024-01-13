@@ -7,7 +7,9 @@ author: David Cao
 <br>
 
 <!-- Video walkthrough or image -->
-https://github.com/dave-cao/Book-Chronicles/assets/63488152/a0d5df1e-ed73-440c-9d96-eac04b8220ae
+https://github.com/dave-cao/Book-Chronicles/assets/63488152/12ddd1ac-def6-4171-a6f4-603970201c6d
+
+
 
 <br>
 
